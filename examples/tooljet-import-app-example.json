@@ -1,0 +1,32 @@
+{
+  "tooljet_version": "2.50.0",
+  "appName": "My Dashboard",
+  "app": [
+    {
+      "definition": {
+        "components": {},
+        "queries": [],
+        "pages": [
+          {
+            "id": "page-1",
+            "name": "Home",
+            "components": {}
+          }
+        ]
+      }
+    }
+  ],
+  "tooljet_database": [
+    {
+      "id": "db-550e8400-e29b-41d4-a716-446655440099",
+      "table_name": "customers",
+      "schema": {
+        "columns": [
+          { "column_name": "id", "data_type": "bigint" },
+          { "column_name": "name", "data_type": "character varying" },
+          { "column_name": "email", "data_type": "character varying" }
+        ]
+      }
+    }
+  ]
+}

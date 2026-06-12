@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tooljet/main/json-schema/tooljet-user-schema.json",
+  "title": "ToolJet User",
+  "description": "Schema for a ToolJet user object returned by the External API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier of the user"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the user"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the user"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "archived", "invited"],
+      "description": "Current account status of the user"
+    },
+    "defaultOrganizationId": {
+      "type": "string",
+      "description": "ID of the user's default workspace/organization"
+    },
+    "workspaces": {
+      "type": "array",
+      "description": "Workspaces the user belongs to",
+      "items": {
+        "$ref": "#/$defs/WorkspaceDto"
+      }
+    }
+  },
+  "$defs": {
+    "GroupDto": {
+      "title": "Group Reference",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "WorkspaceDto": {
+      "title": "Workspace Membership",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "developer", "viewer", "end-user"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "archived", "invited"]
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GroupDto"
+          }
+        }
+      }
+    }
+  }
+}

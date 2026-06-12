@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tooljet/main/json-schema/tooljet-group-schema.json",
+  "title": "ToolJet Group",
+  "description": "Schema for a ToolJet group object managed via the External API",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier of the group"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 50,
+      "pattern": "^[a-zA-Z0-9 _-]+$",
+      "description": "Name of the group (alphanumeric, spaces, hyphens, underscores)"
+    },
+    "permissions": {
+      "$ref": "#/$defs/WorkspacePermissionsDto"
+    },
+    "granularPermissions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/GranularPermissionDto"
+      }
+    }
+  },
+  "$defs": {
+    "WorkspacePermissionsDto": {
+      "title": "Workspace Permissions",
+      "type": "object",
+      "properties": {
+        "appCreate": { "type": "boolean" },
+        "appDelete": { "type": "boolean" },
+        "folderCreate": { "type": "boolean" },
+        "folderDelete": { "type": "boolean" },
+        "orgConstantCRUD": { "type": "boolean" },
+        "workflowCreate": { "type": "boolean" },
+        "workflowDelete": { "type": "boolean" },
+        "dataSourceCreate": { "type": "boolean" },
+        "dataSourceDelete": { "type": "boolean" },
+        "appPromote": { "type": "boolean" },
+        "appRelease": { "type": "boolean" }
+      }
+    },
+    "GranularPermissionDto": {
+      "title": "Granular Permission",
+      "type": "object",
+      "required": ["type", "applyToAll", "resources", "permissions"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["app", "data_source", "folder", "workflow"],
+          "description": "Resource type the permission applies to"
+        },
+        "applyToAll": {
+          "type": "boolean",
+          "description": "Whether permission applies to all resources of this type"
+        },
+        "resources": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Specific resource IDs when applyToAll is false"
+        },
+        "permissions": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Resource-type-specific permission flags"
+        }
+      }
+    }
+  }
+}

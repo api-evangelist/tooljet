@@ -1,0 +1,195 @@
+vocabulary:
+  name: ToolJet Vocabulary
+  description: >
+    Domain-specific terms and concepts used in the ToolJet External API,
+    covering users, workspaces, applications, groups, permissions, and
+    Git-sync operations within the ToolJet low-code platform.
+  url: https://tooljet.com/
+  version: 1.0.0
+
+terms:
+
+  - term: workspace
+    label: Workspace
+    definition: >
+      An isolated organizational unit within ToolJet that contains apps,
+      data sources, users, and groups. Equivalent to a tenant or project
+      space. Every ToolJet instance has one or more workspaces.
+    related:
+      - workspaceId
+      - organization
+
+  - term: workspaceId
+    label: Workspace ID
+    definition: >
+      A UUID that uniquely identifies a workspace within a ToolJet instance.
+      Used as a path parameter in most External API endpoints.
+    type: string
+    format: uuid
+
+  - term: user
+    label: User
+    definition: >
+      A person with access to a ToolJet instance. Users are assigned roles
+      within workspaces and can belong to one or more groups.
+    related:
+      - userId
+      - role
+      - status
+
+  - term: userId
+    label: User ID
+    definition: >
+      A UUID that uniquely identifies a user across the ToolJet instance.
+    type: string
+    format: uuid
+
+  - term: role
+    label: User Role
+    definition: >
+      The level of access a user has within a workspace. Roles include
+      admin, developer, viewer, and end-user.
+    values:
+      - admin
+      - developer
+      - viewer
+      - end-user
+
+  - term: status
+    label: User Status
+    definition: >
+      The current account state of a user. Active users can log in;
+      archived users are disabled; invited users have not yet accepted
+      their invitation.
+    values:
+      - active
+      - archived
+      - invited
+
+  - term: group
+    label: Group
+    definition: >
+      A named collection of users within a workspace used to manage
+      permissions collectively. Groups can be assigned workspace-level
+      and granular (per-resource) permissions.
+    related:
+      - groupId
+      - permissions
+      - granularPermissions
+
+  - term: groupId
+    label: Group ID
+    definition: >
+      A UUID that uniquely identifies a group within a workspace.
+    type: string
+    format: uuid
+
+  - term: permissions
+    label: Workspace Permissions
+    definition: >
+      A set of boolean flags controlling what actions a group can perform
+      at the workspace level, such as creating or deleting apps, folders,
+      workflows, and data sources.
+    fields:
+      - appCreate
+      - appDelete
+      - folderCreate
+      - folderDelete
+      - orgConstantCRUD
+      - workflowCreate
+      - workflowDelete
+      - dataSourceCreate
+      - dataSourceDelete
+      - appPromote
+      - appRelease
+
+  - term: granularPermissions
+    label: Granular Permissions
+    definition: >
+      Fine-grained access control applied to specific resources (apps,
+      data sources, folders, workflows) within a workspace. Allows
+      specifying exact permissions per resource rather than blanket
+      workspace-level access.
+    related:
+      - permissions
+
+  - term: application
+    label: Application
+    definition: >
+      A low-code app built within ToolJet. Applications can be versioned,
+      exported, imported, and synchronized with a Git repository.
+    related:
+      - appId
+      - version
+
+  - term: appId
+    label: Application ID
+    definition: >
+      A UUID or URL slug that uniquely identifies an application within
+      a workspace.
+    type: string
+
+  - term: version
+    label: Application Version
+    definition: >
+      A snapshot of an application at a specific point in time. ToolJet
+      supports multiple named versions per application for staged
+      deployments.
+    related:
+      - versionId
+
+  - term: versionId
+    label: Version ID
+    definition: >
+      A UUID that uniquely identifies a specific version of an application.
+    type: string
+    format: uuid
+
+  - term: gitSync
+    label: Git Sync
+    definition: >
+      A ToolJet feature (Enterprise/Business plan) that connects a
+      workspace to a Git repository to enable version-controlled
+      deployment of applications using push/pull operations.
+    related:
+      - pullGit
+      - pushGit
+
+  - term: accessToken
+    label: External API Access Token
+    definition: >
+      A static token configured via the TOOLJET_SERVICE_TOKEN environment
+      variable used to authenticate requests to the ToolJet External API
+      via Basic authentication.
+    security: BasicAuth
+
+  - term: externalApi
+    label: External API
+    definition: >
+      The ToolJet External API — a set of REST endpoints prefixed with
+      /api/ext — designed for programmatic management of users, workspaces,
+      applications, and groups by external systems and CI/CD pipelines.
+
+  - term: autoDeploy
+    label: Auto Deploy
+    definition: >
+      An External API operation that promotes a specific app version to
+      production without requiring manual interaction in the ToolJet UI.
+    related:
+      - versionId
+
+  - term: selfHosted
+    label: Self-Hosted
+    definition: >
+      A ToolJet deployment mode where the organization operates its own
+      instance on private infrastructure or a cloud provider, as opposed
+      to using ToolJet Cloud.
+    related:
+      - cloud
+
+  - term: cloud
+    label: ToolJet Cloud
+    definition: >
+      The managed SaaS offering of ToolJet hosted by the ToolJet team.
+    related:
+      - selfHosted

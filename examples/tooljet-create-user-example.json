@@ -1,0 +1,21 @@
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "password": "SecureP@ssw0rd",
+  "status": "active",
+  "defaultOrganizationId": "550e8400-e29b-41d4-a716-446655440000",
+  "workspaces": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "name": "Engineering",
+      "role": "developer",
+      "status": "active",
+      "groups": [
+        {
+          "id": "550e8400-e29b-41d4-a716-446655440010",
+          "name": "Frontend Team"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "tooljet": "https://tooljet.com/vocab#",
+    "aid": "tooljet:aid",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "email": "schema:email",
+    "humanURL": "schema:url",
+    "baseURL": "tooljet:baseURL",
+    "version": "schema:version",
+    "tags": "schema:keywords",
+    "properties": "schema:additionalProperty",
+    "Provider": {
+      "@id": "schema:Organization"
+    },
+    "API": {
+      "@id": "schema:WebAPI"
+    },
+    "Workspace": {
+      "@id": "tooljet:Workspace",
+      "@type": "schema:Organization"
+    },
+    "User": {
+      "@id": "tooljet:User",
+      "@type": "schema:Person"
+    },
+    "Application": {
+      "@id": "tooljet:Application",
+      "@type": "schema:SoftwareApplication"
+    },
+    "Group": {
+      "@id": "tooljet:Group",
+      "@type": "schema:Organization"
+    },
+    "status": "tooljet:status",
+    "role": "tooljet:role",
+    "workspaceId": "tooljet:workspaceId",
+    "appId": "tooljet:appId",
+    "groupId": "tooljet:groupId",
+    "versionId": "tooljet:versionId",
+    "permissions": "tooljet:permissions",
+    "granularPermissions": "tooljet:granularPermissions",
+    "accessToken": "tooljet:accessToken",
+    "deploymentType": {
+      "@id": "tooljet:deploymentType",
+      "@type": "@vocab"
+    },
+    "selfHosted": "tooljet:selfHosted",
+    "cloud": "tooljet:cloud"
+  }
+}

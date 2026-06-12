@@ -1,0 +1,30 @@
+{
+  "name": "DevOps Team",
+  "permissions": {
+    "appCreate": true,
+    "appDelete": false,
+    "folderCreate": true,
+    "folderDelete": false,
+    "orgConstantCRUD": false,
+    "workflowCreate": true,
+    "workflowDelete": false,
+    "dataSourceCreate": true,
+    "dataSourceDelete": false,
+    "appPromote": true,
+    "appRelease": true
+  },
+  "granularPermissions": [
+    {
+      "type": "app",
+      "applyToAll": false,
+      "resources": [
+        "app-uuid-001",
+        "app-uuid-002"
+      ],
+      "permissions": {
+        "canEdit": true,
+        "hideFromDashboard": false
+      }
+    }
+  ]
+}
