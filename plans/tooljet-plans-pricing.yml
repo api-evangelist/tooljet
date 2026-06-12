@@ -1,0 +1,162 @@
+spec: API Commons Plans 0.1
+provider: ToolJet
+providerId: tooljet
+created: 2026-06-12
+modified: 2026-06-12
+reconciled: true
+url: https://tooljet.com/pricing
+
+plans:
+  - name: Free
+    description: >
+      Free cloud-hosted tier for small teams getting started with ToolJet.
+      Supports up to 2 builders, 50 end users, and 2 applications.
+    type: freemium
+    pricing:
+      model: flat
+      amount: 0
+      currency: USD
+      interval: month
+    quotas:
+      - metric: builders
+        limit: 2
+        type: quota
+      - metric: end_users
+        limit: 50
+        type: quota
+      - metric: apps
+        limit: 2
+        type: quota
+      - metric: ai_credits_per_month
+        limit: 100
+        type: quota
+      - metric: tooljet_db_tables
+        limit: 5
+        type: quota
+    features:
+      - Predefined user roles
+      - Community Slack support
+      - ToolJet DB
+
+  - name: Pro
+    description: >
+      Professional cloud plan for growing teams needing custom styling,
+      version control, and email support.
+    type: paid
+    pricing:
+      model: per-seat
+      amount: 79
+      currency: USD
+      interval: month
+      annualDiscount: 20
+      unit: builder
+    quotas:
+      - metric: builders
+        limit: unlimited
+        type: boolean
+      - metric: end_users
+        limit: 100
+        type: quota
+      - metric: apps
+        limit: 5
+        type: quota
+      - metric: ai_credits_per_builder_per_month
+        limit: 2000
+        type: quota
+    features:
+      - Custom styling
+      - Version control
+      - Email support
+      - Custom domain
+
+  - name: Team
+    description: >
+      Most popular plan for teams requiring unlimited apps, users, SSO,
+      white-labeling, Git sync, audit logs, and priority support.
+    type: paid
+    pricing:
+      model: per-seat
+      amount: 199
+      currency: USD
+      interval: month
+      annualDiscount: 20
+      unit: builder
+    quotas:
+      - metric: builders
+        limit: unlimited
+        type: boolean
+      - metric: end_users
+        limit: unlimited
+        type: boolean
+      - metric: apps
+        limit: unlimited
+        type: boolean
+      - metric: ai_credits_per_builder_per_month
+        limit: 2000
+        type: quota
+    features:
+      - SSO integration
+      - Custom user groups
+      - White labeling
+      - Git sync
+      - Audit logs
+      - Modules
+      - Priority support
+
+  - name: Enterprise
+    description: >
+      Custom enterprise plan with SCIM provisioning, custom AI models,
+      dedicated support manager, multi-instance, and air-gapped deployment.
+    type: enterprise
+    pricing:
+      model: custom
+      amount: null
+      currency: USD
+      interval: month
+    quotas:
+      - metric: builders
+        limit: custom
+        type: quota
+      - metric: end_users
+        limit: custom
+        type: quota
+      - metric: apps
+        limit: unlimited
+        type: boolean
+      - metric: ai_credits
+        limit: custom
+        type: quota
+    features:
+      - SCIM provisioning
+      - Custom AI models
+      - Dedicated support manager
+      - Optional training
+      - Multi-instance deployments
+      - Air-gapped deployment
+      - Managed hosting add-on
+
+selfHosted:
+  - name: Community Edition (Free)
+    description: Self-hosted open-source community edition at no cost.
+    type: free
+    pricing:
+      model: flat
+      amount: 0
+      currency: USD
+    notes: Same feature set as the cloud Free tier
+
+  - name: Team (Self-Hosted)
+    description: Self-hosted team plan with full feature parity to cloud Team plan.
+    type: paid
+    pricing:
+      model: per-seat
+      amount: 199
+      currency: USD
+      interval: month
+      unit: builder
+
+  - name: Enterprise (Self-Hosted)
+    description: Custom self-hosted enterprise plan for large organizations.
+    type: enterprise
+    pricing:
+      model: custom

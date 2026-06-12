@@ -1,0 +1,129 @@
+spec: FinOps Framework 1.0
+provider: ToolJet
+providerId: tooljet
+created: 2026-06-12
+modified: 2026-06-12
+url: https://tooljet.com/pricing
+
+billingModel:
+  type: hybrid
+  description: >
+    ToolJet uses a hybrid billing model. Cloud plans are priced per-builder
+    per-month (seat-based), with a free tier available. Self-hosted plans are
+    also seat-based for Team and Enterprise tiers. Enterprise plans are
+    custom-quoted. AI credits are included per builder per month on paid plans
+    and can be purchased as add-ons on Enterprise. Managed hosting for
+    self-hosted deployments is an optional paid add-on.
+  primaryUnit: builder-seat
+  secondaryUnit: ai_credit
+
+focusColumns:
+  - name: ProviderName
+    value: ToolJet
+  - name: ServiceName
+    values:
+      - ToolJet Cloud
+      - ToolJet Self-Hosted
+  - name: SKUName
+    values:
+      - Free
+      - Pro
+      - Team
+      - Enterprise
+  - name: ChargeCategory
+    values:
+      - Usage
+      - Adjustment
+  - name: BillingCurrency
+    value: USD
+  - name: BillingPeriod
+    value: Monthly
+
+meters:
+  - name: Builder Seats
+    unit: builder/month
+    description: >
+      Primary cost driver. Each builder (developer/admin who creates apps)
+      consumes one seat per month. End users do not count toward seat cost
+      on Team and Enterprise plans.
+    tiers:
+      - plan: Free
+        quantity: 2
+        pricePerUnit: 0
+      - plan: Pro
+        quantity: unlimited
+        pricePerUnit: 79
+        currency: USD
+        annualPrice: 63.20
+      - plan: Team
+        quantity: unlimited
+        pricePerUnit: 199
+        currency: USD
+        annualPrice: 159.20
+
+  - name: AI Credits
+    unit: credit/month
+    description: >
+      AI credits consumed by AI-powered app generation features. Included in
+      paid plans per builder per month; custom volume on Enterprise.
+    tiers:
+      - plan: Free
+        quantity: 100
+        pricePerUnit: 0
+      - plan: Pro
+        quantity: 2000
+        pricePerUnit: 0
+        notes: Included; overage pricing not published
+      - plan: Team
+        quantity: 2000
+        pricePerUnit: 0
+        notes: Included; overage pricing not published
+      - plan: Enterprise
+        quantity: custom
+        pricePerUnit: custom
+
+  - name: End Users
+    unit: user
+    description: >
+      End users who consume (but do not build) ToolJet applications. Capped
+      on Free (50) and Pro (100); unlimited on Team and Enterprise.
+    tiers:
+      - plan: Free
+        quantity: 50
+        pricePerUnit: 0
+      - plan: Pro
+        quantity: 100
+        pricePerUnit: 0
+      - plan: Team
+        quantity: unlimited
+        pricePerUnit: 0
+      - plan: Enterprise
+        quantity: custom
+        pricePerUnit: 0
+
+principles:
+  Visibility:
+    description: >
+      ToolJet provides per-plan usage quotas for builders, end users, apps,
+      and AI credits. Cloud customers can track active builder seats and
+      application counts within the workspace admin dashboard. Enterprise
+      customers receive a dedicated support manager who can assist with
+      usage reporting.
+    recommendations:
+      - Monitor active builder seat count to avoid unintended plan upgrades
+      - Track AI credit consumption on Pro and Team plans to anticipate overage
+      - Use workspace audit logs (Team/Enterprise) to attribute app usage
+
+  Optimization:
+    description: >
+      Cost optimization on ToolJet centers on right-sizing the number of
+      builder seats and choosing between cloud and self-hosted deployment.
+      Annual billing offers a 20% discount on Pro and Team plans.
+    recommendations:
+      - Switch to annual billing for 20% savings on Pro and Team plans
+      - Evaluate self-hosted Community Edition to eliminate per-seat costs
+        for organizations with DevOps capacity
+      - Deactivate builder accounts for users who only consume applications
+        (end users are free on Team/Enterprise)
+      - Consolidate workspaces to minimize seat fragmentation
+      - Use the Free tier for prototyping before committing to paid plans

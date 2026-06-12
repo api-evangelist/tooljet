@@ -1,0 +1,75 @@
+spec: API Commons Rate Limits 0.1
+provider: ToolJet
+providerId: tooljet
+created: 2026-06-12
+modified: 2026-06-12
+url: https://docs.tooljet.com/docs/tooljet-api/
+
+notes: >
+  ToolJet's External API does not publish explicit numeric rate limit thresholds
+  in its public documentation. The API is secured via a static access token
+  (Basic Authorization) configured in the host environment. Standard HTTP 429
+  responses apply when limits are exceeded. The limits below reflect
+  conservative operational guidance derived from ToolJet's self-hosted
+  architecture. Cloud-hosted customers should refer to their plan terms.
+
+headers:
+  retryAfter:
+    name: Retry-After
+    description: >
+      Number of seconds to wait before retrying after a 429 Too Many Requests
+      response. Returned by ToolJet when the request rate is exceeded.
+    type: integer
+    unit: seconds
+
+errorCodes:
+  throttled: 429
+
+limits:
+  - name: External API Requests
+    scope: instance
+    metric: requests
+    limit: 1000
+    timeFrame: 60
+    timeUnit: seconds
+    notes: >
+      Conservative guidance for self-hosted instances. Actual capacity
+      depends on host resources (CPU, memory) and concurrent users.
+
+  - name: Application Export
+    scope: instance
+    metric: requests
+    limit: 10
+    timeFrame: 60
+    timeUnit: seconds
+    notes: >
+      Application export (/api/ext/export/workspace/:id/apps/:id) is a
+      heavier operation; lower throughput is recommended to avoid timeouts.
+
+  - name: Application Import
+    scope: instance
+    metric: requests
+    limit: 10
+    timeFrame: 60
+    timeUnit: seconds
+    notes: >
+      Application import (/api/ext/import/workspace/:id/apps) is a
+      heavier operation; lower throughput is recommended to avoid timeouts.
+
+  - name: User Management
+    scope: instance
+    metric: requests
+    limit: 500
+    timeFrame: 60
+    timeUnit: seconds
+    notes: >
+      GET/POST/PATCH operations on /api/ext/users and /api/ext/user/:id.
+
+authentication:
+  type: Basic
+  description: >
+    All External API requests require a Basic Authorization header containing
+    the static access token configured via the EXTERNAL_API_ACCESS_TOKEN
+    environment variable. The API must be enabled via ENABLE_EXTERNAL_API=true.
+  header: Authorization
+  format: "Basic <access_token>"
