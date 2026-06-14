@@ -1,0 +1,316 @@
+# ToolJet GraphQL Schema (SDL)
+#
+# ToolJet does not expose a native GraphQL API endpoint. This schema documents
+# the core platform data model types derived from the TypeORM server-side entities
+# at https://github.com/ToolJet/ToolJet/tree/main/server/src/entities
+#
+# These types represent objects surfaced by the ToolJet External REST API and
+# the internal platform. The schema can be used as a reference for connecting
+# ToolJet to GraphQL tooling or for describing the data model in API catalogs.
+
+scalar DateTime
+scalar JSON
+
+# ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum UserStatus {
+  invited
+  verified
+  active
+  archived
+}
+
+enum UserSource {
+  signup
+  invite
+  google
+  git
+  ldap
+  saml
+  workspace_signup
+}
+
+enum OrganizationUserStatus {
+  invited
+  active
+  archived
+}
+
+enum OrganizationUserSource {
+  signup
+  invite
+}
+
+enum OrganizationStatus {
+  active
+  archived
+}
+
+enum AppVersionStatus {
+  DRAFT
+  PUBLISHED
+  RELEASED
+}
+
+enum AppVersionType {
+  version
+  branch
+}
+
+enum DataSourceType {
+  static
+  default
+  sample
+}
+
+enum DataSourceScope {
+  local
+  global
+}
+
+enum AppType {
+  front_end
+  workflow
+}
+
+# ─── Types ───────────────────────────────────────────────────────────────────
+
+"""
+A ToolJet platform user. Maps to the `users` database table.
+"""
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String!
+  phoneNumber: String
+  status: UserStatus!
+  source: UserSource!
+  avatarId: String
+  companyName: String
+  companySize: String
+  role: String
+  autoActivated: Boolean!
+  defaultOrganizationId: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  organizationUsers: [OrganizationUser!]
+}
+
+"""
+Membership record linking a User to an Organization (workspace).
+Maps to the `organization_users` table.
+"""
+type OrganizationUser {
+  id: ID!
+  role: String!
+  status: OrganizationUserStatus!
+  source: OrganizationUserSource!
+  organizationId: String!
+  userId: String!
+  invitationToken: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  organization: Organization
+  user: User
+}
+
+"""
+A ToolJet workspace (organization). Maps to the `organizations` table.
+"""
+type Organization {
+  id: ID!
+  name: String!
+  slug: String!
+  domain: String
+  passwordAllowedDomains: String
+  passwordRestrictedDomains: String
+  isDefault: Boolean!
+  enableSignUp: Boolean!
+  inheritSSO: Boolean!
+  automaticSsoLogin: Boolean!
+  status: OrganizationStatus!
+  lastAccessedAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A ToolJet application (low-code app). Maps to the `apps` table.
+"""
+type App {
+  id: ID!
+  name: String!
+  slug: String!
+  type: AppType!
+  isPublic: Boolean!
+  isMaintenanceOn: Boolean!
+  icon: String
+  organizationId: String!
+  userId: String!
+  currentVersionId: String
+  workflowEnabled: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  organization: Organization
+  currentVersion: AppVersion
+  user: User
+}
+
+"""
+A versioned snapshot of an App. Maps to the `app_versions` table.
+"""
+type AppVersion {
+  id: ID!
+  name: String!
+  definition: JSON
+  globalSettings: JSON
+  pageSettings: JSON
+  showViewerNavigation: Boolean
+  homePageId: String
+  versionType: AppVersionType!
+  status: AppVersionStatus
+  appId: String!
+  currentEnvironmentId: String
+  promotedFrom: String
+  parentVersionId: String
+  createdBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  app: App
+}
+
+"""
+An external data source connected to an App. Maps to the `data_sources` table.
+Supported kinds include graphql, restapi, postgresql, mysql, mongodb, and others.
+"""
+type DataSource {
+  id: ID!
+  name: String!
+  kind: String!
+  type: DataSourceType!
+  scope: DataSourceScope!
+  pluginId: String
+  appVersionId: String
+  organizationId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A saved query or mutation bound to a DataSource within an AppVersion.
+Maps to the `data_queries` table.
+"""
+type DataQuery {
+  id: ID!
+  name: String!
+  options: JSON
+  dataSourceId: String!
+  appVersionId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  dataSource: DataSource
+  appVersion: AppVersion
+}
+
+"""
+A comment left on an App canvas by a collaborator.
+Maps to the `comments` table.
+"""
+type Comment {
+  id: ID!
+  threadId: String!
+  comment: String!
+  isRead: Boolean!
+  appVersionsId: String!
+  userId: String!
+  organizationId: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: User
+}
+
+"""
+A comment thread anchored to a position on the App canvas.
+Maps to the `threads` table.
+"""
+type Thread {
+  id: ID!
+  x: Float!
+  y: Float!
+  appId: String!
+  appVersionsId: String!
+  userId: String!
+  organizationId: String!
+  isResolved: Boolean!
+  pageId: String
+  user: User
+  app: App
+}
+
+"""
+Permission record granting a group access to an App.
+Maps to the `app_group_permissions` table (legacy; superseded by group_apps).
+"""
+type AppGroupPermission {
+  id: ID!
+  appId: String!
+  groupPermissionId: String!
+  read: Boolean!
+  update: Boolean!
+  delete: Boolean!
+  hideFromDashboard: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  app: App
+}
+
+"""
+A folder used to organise Apps within a workspace.
+Maps to the `folders` table.
+"""
+type Folder {
+  id: ID!
+  name: String!
+  type: String!
+  organizationId: String!
+  createdBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  creator: User
+  apps: [App!]
+}
+
+# ─── Query Root ──────────────────────────────────────────────────────────────
+# NOTE: ToolJet does not expose these as a live GraphQL endpoint.
+# The definitions below document the queryable surface of the data model
+# for reference and catalog purposes only.
+
+type Query {
+  user(id: ID!): User
+  users(organizationId: ID!): [User!]
+
+  organization(id: ID!): Organization
+  organizations: [Organization!]
+
+  app(id: ID!): App
+  apps(organizationId: ID!): [App!]
+
+  appVersion(id: ID!): AppVersion
+  appVersions(appId: ID!): [AppVersion!]
+
+  dataSource(id: ID!): DataSource
+  dataSources(appVersionId: ID!): [DataSource!]
+
+  dataQuery(id: ID!): DataQuery
+  dataQueries(appVersionId: ID!): [DataQuery!]
+
+  thread(id: ID!): Thread
+  threads(appId: ID!): [Thread!]
+
+  comment(id: ID!): Comment
+  comments(threadId: ID!): [Comment!]
+
+  folder(id: ID!): Folder
+  folders(organizationId: ID!): [Folder!]
+}

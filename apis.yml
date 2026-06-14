@@ -5,82 +5,85 @@ image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/tooljet/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: "0.19"
-description: >
-  ToolJet is an open-source low-code platform for building internal tools,
-  dashboards, business applications, workflows, and AI agents. It provides a
-  REST API (the ToolJet External API) that enables programmatic management of
-  users, workspaces, applications, and user roles across self-hosted and cloud
-  deployments. Authentication is handled via a static access token configured
-  in environment variables and passed as a Basic Authorization header. ToolJet
-  supports connecting to external data sources including REST APIs, GraphQL,
-  databases, and cloud storage, and offers OpenAPI-spec-driven data source
-  integration within the platform. Pricing spans a free tier up to enterprise
+specificationVersion: '0.19'
+description: 'ToolJet is an open-source low-code platform for building internal tools,
+  dashboards, business applications, workflows, and AI agents. It provides a REST
+  API (the ToolJet External API) that enables programmatic management of users, workspaces,
+  applications, and user roles across self-hosted and cloud deployments. Authentication
+  is handled via a static access token configured in environment variables and passed
+  as a Basic Authorization header. ToolJet supports connecting to external data sources
+  including REST APIs, GraphQL, databases, and cloud storage, and offers OpenAPI-spec-driven
+  data source integration within the platform. Pricing spans a free tier up to enterprise
   plans with SSO, Git sync, audit logs, and SCIM provisioning.
+
+  '
 tags:
-  - low-code
-  - internal tools
-  - open-source
-  - application builder
-  - workflow automation
-  - no-code
-  - dashboards
-  - AI agents
+- low-code
+- internal tools
+- open-source
+- application builder
+- workflow automation
+- no-code
+- dashboards
+- AI agents
 apis:
-  - aid: tooljet:tooljet-external-api
-    name: ToolJet External API
-    description: >
-      The ToolJet External API provides REST endpoints for managing users,
-      workspaces, applications (export/import), and user role assignments
-      across a ToolJet instance. It is enabled via environment variables and
-      secured with a static access token using Basic authentication.
-    humanURL: https://docs.tooljet.com/docs/tooljet-api/
-    baseURL: https://your-tooljet-instance.com/api/ext
-    tags:
-      - users
-      - workspaces
-      - applications
-      - roles
-    properties:
-      - type: Documentation
-        url: https://docs.tooljet.com/docs/tooljet-api/
-      - type: OpenAPI
-        url: openapi/tooljet-tooljet-external-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/tooljet-user-schema.json
-      - type: JSONSchema
-        url: json-schema/tooljet-group-schema.json
-      - type: JSONLDContext
-        url: json-ld/tooljet-context.jsonld
-      - type: Vocabulary
-        url: vocabulary/tooljet-vocabulary.yml
-common:
-  - type: Website
-    url: https://tooljet.com/
+- aid: tooljet:tooljet-external-api
+  name: ToolJet External API
+  description: 'The ToolJet External API provides REST endpoints for managing users,
+    workspaces, applications (export/import), and user role assignments across a ToolJet
+    instance. It is enabled via environment variables and secured with a static access
+    token using Basic authentication.
+
+    '
+  humanURL: https://docs.tooljet.com/docs/tooljet-api/
+  baseURL: https://your-tooljet-instance.com/api/ext
+  tags:
+  - users
+  - workspaces
+  - applications
+  - roles
+  properties:
   - type: Documentation
-    url: https://docs.tooljet.com/docs/
-  - type: GitHubOrganization
-    url: https://github.com/ToolJet
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/tooljet
-  - type: X
-    url: https://x.com/tooljet
-  - type: Blog
-    url: https://blog.tooljet.com/
-  - type: Pricing
-    url: https://tooljet.com/pricing
-  - type: StatusPage
-    url: https://status.tooljet.com/
-  - type: Plans
-    url: plans/tooljet-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/tooljet-rate-limits.yml
-  - type: FinOps
-    url: finops/tooljet-finops.yml
-  - type: BlogRSS
-    url: https://blog.tooljet.com/rss/
-  - type: Blog
-    url: blogs/blogs.json
+    url: https://docs.tooljet.com/docs/tooljet-api/
+  - type: OpenAPI
+    url: openapi/tooljet-tooljet-external-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tooljet-user-schema.json
+  - type: JSONSchema
+    url: json-schema/tooljet-group-schema.json
+  - type: JSONLDContext
+    url: json-ld/tooljet-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tooljet-vocabulary.yml
+  - url: graphql/tooljet-graphql.md
+    type: GraphQL
+common:
+- type: Website
+  url: https://tooljet.com/
+- type: Documentation
+  url: https://docs.tooljet.com/docs/
+- type: GitHubOrganization
+  url: https://github.com/ToolJet
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tooljet
+- type: X
+  url: https://x.com/tooljet
+- type: Blog
+  url: https://blog.tooljet.com/
+- type: Pricing
+  url: https://tooljet.com/pricing
+- type: StatusPage
+  url: https://status.tooljet.com/
+- type: Plans
+  url: plans/tooljet-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tooljet-rate-limits.yml
+- type: FinOps
+  url: finops/tooljet-finops.yml
+- type: BlogRSS
+  url: https://blog.tooljet.com/rss/
+- type: Blog
+  url: blogs/blogs.json
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
