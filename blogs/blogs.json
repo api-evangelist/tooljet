@@ -4,5 +4,24 @@
   "url": "https://blog.tooljet.com/",
   "rss": "https://blog.tooljet.com/rss/",
   "lastFetched": "2026-06-12",
-  "posts": []
+  "posts": [],
+  "repo": "tooljet",
+  "feeds": [
+    {
+      "source": "https://x.com/tooljet",
+      "feed_url": "https://x.com/tooljet",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://blog.tooljet.com/rss/",
+      "feed_url": "https://blog.tooljet.com/rss/",
+      "title": "",
+      "saved": 4,
+      "method": "feed"
+    }
+  ],
+  "post_count": 4,
+  "fetched": "2026-06-14T20:42:17Z"
 }
