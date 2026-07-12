@@ -58,6 +58,12 @@ apis:
   - url: graphql/tooljet-graphql.md
     type: GraphQL
 common:
+- type: TrustCenter
+  url: security/tooljet-trust-center.yml
+- type: DomainSecurity
+  url: security/tooljet-domain-security.yml
+- type: Authentication
+  url: authentication/tooljet-authentication.yml
 - type: Website
   url: https://tooljet.com/
 - type: Documentation

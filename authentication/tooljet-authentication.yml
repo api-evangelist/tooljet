@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tooljet-tooljet-external-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  description: Static access token configured via the TOOLJET_SERVICE_TOKEN environment variable.
+    Pass the token as the username with an empty password, encoded as Base64 in the Authorization
+    header.
+  sources:
+  - openapi/tooljet-tooljet-external-api-openapi.yml
