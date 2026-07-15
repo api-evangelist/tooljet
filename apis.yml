@@ -58,6 +58,8 @@ apis:
   - url: graphql/tooljet-graphql.md
     type: GraphQL
 common:
+- type: AgenticAccess
+  url: agentic-access/tooljet-agentic-access.yml
 - type: TrustCenter
   url: security/tooljet-trust-center.yml
 - type: DomainSecurity
