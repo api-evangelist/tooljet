@@ -1,0 +1,292 @@
+openapi: 3.0.3
+info:
+  title: ToolJet External Applications Groups API
+  description: 'The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
+
+    '
+  version: 1.0.0
+  contact:
+    name: ToolJet
+    url: https://tooljet.com/
+  license:
+    name: AGPL-3.0
+    url: https://github.com/ToolJet/ToolJet/blob/main/LICENSE
+servers:
+- url: https://{instance}/api/ext
+  description: ToolJet instance
+  variables:
+    instance:
+      default: your-tooljet-instance.com
+      description: Hostname of the ToolJet deployment
+security:
+- BasicAuth: []
+tags:
+- name: Groups
+  description: Group and permission management endpoints
+paths:
+  /workspace/{workspaceId}/groups:
+    get:
+      summary: List groups in workspace
+      operationId: listGroups
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      - name: search
+        in: query
+        schema:
+          type: string
+        description: Filter groups by name
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+        description: Page number
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 20
+        description: Results per page
+      responses:
+        '200':
+          description: List of groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Group'
+                  total:
+                    type: integer
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a group in workspace
+      operationId: createGroup
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupExternalDto'
+      responses:
+        '201':
+          description: Group created
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /workspace/{workspaceId}/groups/{groupId}:
+    get:
+      summary: Get a group by ID
+      operationId: getGroup
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      - $ref: '#/components/parameters/GroupId'
+      responses:
+        '200':
+          description: Group details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      summary: Update a group
+      operationId: updateGroup
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      - $ref: '#/components/parameters/GroupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupExternalDto'
+      responses:
+        '204':
+          description: Group updated
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      summary: Delete a group
+      operationId: deleteGroup
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      - $ref: '#/components/parameters/GroupId'
+      responses:
+        '204':
+          description: Group deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
+    UpdateGroupExternalDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
+    GranularPermissionDto:
+      type: object
+      required:
+      - type
+      - applyToAll
+      - resources
+      - permissions
+      properties:
+        type:
+          type: string
+          enum:
+          - app
+          - data_source
+          - folder
+          - workflow
+        applyToAll:
+          type: boolean
+        resources:
+          type: array
+          items:
+            type: string
+        permissions:
+          type: object
+          additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        error:
+          type: string
+    WorkspacePermissionsDto:
+      type: object
+      properties:
+        appCreate:
+          type: boolean
+        appDelete:
+          type: boolean
+        folderCreate:
+          type: boolean
+        folderDelete:
+          type: boolean
+        orgConstantCRUD:
+          type: boolean
+        workflowCreate:
+          type: boolean
+        workflowDelete:
+          type: boolean
+        dataSourceCreate:
+          type: boolean
+        dataSourceDelete:
+          type: boolean
+        appPromote:
+          type: boolean
+        appRelease:
+          type: boolean
+    CreateGroupExternalDto:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
+  responses:
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
+    GroupId:
+      name: groupId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Group UUID
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'Static access token configured via the TOOLJET_SERVICE_TOKEN environment variable. Pass the token as the username with an empty password, encoded as Base64 in the Authorization header.
+
+        '

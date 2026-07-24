@@ -1,0 +1,392 @@
+openapi: 3.0.3
+info:
+  title: ToolJet External Applications API
+  description: 'The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
+
+    '
+  version: 1.0.0
+  contact:
+    name: ToolJet
+    url: https://tooljet.com/
+  license:
+    name: AGPL-3.0
+    url: https://github.com/ToolJet/ToolJet/blob/main/LICENSE
+servers:
+- url: https://{instance}/api/ext
+  description: ToolJet instance
+  variables:
+    instance:
+      default: your-tooljet-instance.com
+      description: Hostname of the ToolJet deployment
+security:
+- BasicAuth: []
+tags:
+- name: Applications
+  description: Application export, import, and Git sync endpoints
+paths:
+  /workspace/{workspaceId}:
+    get:
+      summary: List apps in workspace
+      operationId: getWorkspaceApps
+      tags:
+      - Applications
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      responses:
+        '200':
+          description: List of apps with versions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkspaceAppsResponseDto'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /import/{workspaceId}:
+    post:
+      summary: Import an application into a workspace
+      operationId: importApp
+      tags:
+      - Applications
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppImportRequestDto'
+      responses:
+        '201':
+          description: Application imported
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /export/{appId}/{workspaceId}:
+    get:
+      summary: Export an application
+      operationId: exportApp
+      tags:
+      - Applications
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Application UUID
+      - $ref: '#/components/parameters/WorkspaceId'
+      - name: exportTjdb
+        in: query
+        schema:
+          type: boolean
+        description: Include ToolJet database export
+      - name: appVersion
+        in: query
+        schema:
+          type: string
+        description: Specific version to export
+      - name: exportAllVersions
+        in: query
+        schema:
+          type: boolean
+        description: Export all versions
+      responses:
+        '200':
+          description: Application export data
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /pull-git:
+    post:
+      summary: Pull app from Git
+      operationId: pullGit
+      tags:
+      - Applications
+      parameters:
+      - name: createMode
+        in: query
+        schema:
+          type: boolean
+        description: Create a new app if not found
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppGitPullDto'
+      responses:
+        '200':
+          description: Git pull result
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /pull-changes/{appId}:
+    post:
+      summary: Pull Git changes for an app
+      operationId: pullChanges
+      tags:
+      - Applications
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Application UUID
+      - name: createMode
+        in: query
+        schema:
+          type: boolean
+        description: Create a new app if not found
+      responses:
+        '200':
+          description: Pull changes result
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /push-git/{appId}/{versionId}:
+    post:
+      summary: Push app version to Git
+      operationId: pushGit
+      tags:
+      - Applications
+      parameters:
+      - name: appId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Application UUID
+      - name: versionId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Version UUID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AppGitPushDto'
+      responses:
+        '200':
+          description: Push result
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /auto-deploy/{appIdOrSlug}:
+    post:
+      summary: Auto-deploy an app version
+      operationId: autoDeploy
+      tags:
+      - Applications
+      parameters:
+      - name: appIdOrSlug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Application UUID or slug
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoDeployBodyDto'
+      responses:
+        '200':
+          description: Deployment initiated
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /save-version/{appIdOrSlug}:
+    post:
+      summary: Save a named version of an app
+      operationId: saveVersion
+      tags:
+      - Applications
+      parameters:
+      - name: appIdOrSlug
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Application UUID or slug
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveVersionBodyDto'
+      responses:
+        '200':
+          description: Version saved
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    AutoDeployBodyDto:
+      type: object
+      properties:
+        versionId:
+          type: string
+          format: uuid
+        versionName:
+          type: string
+    WorkspaceAppsResponseDto:
+      type: object
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppWithVersionsDto'
+        total:
+          type: integer
+    AppWithVersionsDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        organizationId:
+          type: string
+          format: uuid
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionDto'
+        versionCount:
+          type: integer
+    AppGitPushDto:
+      type: object
+      required:
+      - commitMessage
+      properties:
+        commitMessage:
+          type: string
+    AppImportRequestDto:
+      type: object
+      required:
+      - tooljet_version
+      properties:
+        tooljet_version:
+          type: string
+        app:
+          type: array
+          items:
+            type: object
+            properties:
+              definition:
+                type: object
+                additionalProperties: true
+        appName:
+          type: string
+        tooljet_database:
+          type: array
+          items:
+            type: object
+            required:
+            - id
+            - table_name
+            - schema
+            properties:
+              id:
+                type: string
+                format: uuid
+              table_name:
+                type: string
+              schema:
+                type: object
+                additionalProperties: true
+    VersionDto:
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        error:
+          type: string
+    AppGitPullDto:
+      type: object
+      required:
+      - appId
+      - organizationId
+      properties:
+        appId:
+          type: string
+        organizationId:
+          type: string
+    SaveVersionBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 25
+  responses:
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'Static access token configured via the TOOLJET_SERVICE_TOKEN environment variable. Pass the token as the username with an empty password, encoded as Base64 in the Authorization header.
+
+        '

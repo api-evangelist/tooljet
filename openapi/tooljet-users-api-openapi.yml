@@ -1,0 +1,383 @@
+openapi: 3.0.3
+info:
+  title: ToolJet External Applications Users API
+  description: 'The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
+
+    '
+  version: 1.0.0
+  contact:
+    name: ToolJet
+    url: https://tooljet.com/
+  license:
+    name: AGPL-3.0
+    url: https://github.com/ToolJet/ToolJet/blob/main/LICENSE
+servers:
+- url: https://{instance}/api/ext
+  description: ToolJet instance
+  variables:
+    instance:
+      default: your-tooljet-instance.com
+      description: Hostname of the ToolJet deployment
+security:
+- BasicAuth: []
+tags:
+- name: Users
+  description: User management endpoints
+paths:
+  /users:
+    get:
+      summary: List all users
+      operationId: getAllUsers
+      tags:
+      - Users
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      summary: Create a user
+      operationId: createUser
+      tags:
+      - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserDto'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /user/{id}:
+    get:
+      summary: Get a user by ID
+      operationId: getUser
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      summary: Update a user
+      operationId: updateUser
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserDto'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /user/{id}/workspaces:
+    put:
+      summary: Replace user workspaces
+      operationId: replaceUserWorkspaces
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/WorkspaceDto'
+      responses:
+        '200':
+          description: Workspaces replaced
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /user/{id}/workspace/{workspaceId}:
+    patch:
+      summary: Update user workspace membership
+      operationId: updateUserWorkspace
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/WorkspaceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGivenWorkspaceDto'
+      responses:
+        '200':
+          description: Workspace membership updated
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /workspace/{workspaceId}/user/{userId}:
+    get:
+      summary: Get user metadata in workspace
+      operationId: getUserMetadata
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: User UUID
+      responses:
+        '200':
+          description: User metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update user metadata in workspace
+      operationId: updateUserMetadata
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/WorkspaceId'
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: User UUID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetadataDto'
+      responses:
+        '200':
+          description: User metadata updated
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    WorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    UserRole:
+      type: string
+      enum:
+      - admin
+      - developer
+      - viewer
+      - end-user
+    UpdateGivenWorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    GroupDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    CreateUserDto:
+      type: object
+      required:
+      - name
+      - email
+      - workspaces
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        defaultOrganizationId:
+          type: string
+        workspaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkspaceDto'
+    Status:
+      type: string
+      enum:
+      - active
+      - archived
+      - invited
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        error:
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        status:
+          $ref: '#/components/schemas/Status'
+        defaultOrganizationId:
+          type: string
+        workspaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkspaceDto'
+    UpdateUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        defaultOrganizationId:
+          type: string
+    UpdateUserMetadataDto:
+      type: object
+      required:
+      - userDetails
+      properties:
+        userDetails:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+  parameters:
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+      description: 'Static access token configured via the TOOLJET_SERVICE_TOKEN environment variable. Pass the token as the username with an empty password, encoded as Base64 in the Authorization header.
+
+        '
