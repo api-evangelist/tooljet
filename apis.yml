@@ -1,7 +1,20 @@
 aid: tooljet
 name: ToolJet
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tooljet.png
 url: https://raw.githubusercontent.com/api-evangelist/tooljet/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -27,26 +40,18 @@ tags:
 - dashboards
 - AI agents
 apis:
-- aid: tooljet:tooljet-external-api
-  name: ToolJet External API
-  description: 'The ToolJet External API provides REST endpoints for managing users,
-    workspaces, applications (export/import), and user role assignments across a ToolJet
-    instance. It is enabled via environment variables and secured with a static access
-    token using Basic authentication.
-
-    '
+- aid: tooljet:tooljet-applications-api
+  name: ToolJet Applications API
+  description: Application export, import, and Git sync endpoints
   humanURL: https://docs.tooljet.com/docs/tooljet-api/
   baseURL: https://your-tooljet-instance.com/api/ext
   tags:
-  - users
-  - workspaces
-  - applications
-  - roles
+  - Applications
   properties:
+  - type: OpenAPI
+    url: openapi/tooljet-applications-api-openapi.yml
   - type: Documentation
     url: https://docs.tooljet.com/docs/tooljet-api/
-  - type: OpenAPI
-    url: openapi/tooljet-tooljet-external-api-openapi.yml
   - type: JSONSchema
     url: json-schema/tooljet-user-schema.json
   - type: JSONSchema
@@ -55,8 +60,74 @@ apis:
     url: json-ld/tooljet-context.jsonld
   - type: Vocabulary
     url: vocabulary/tooljet-vocabulary.yml
-  - url: graphql/tooljet-graphql.md
-    type: GraphQL
+  - type: GraphQL
+    url: graphql/tooljet-graphql.md
+- aid: tooljet:tooljet-groups-api
+  name: ToolJet Groups API
+  description: Group and permission management endpoints
+  humanURL: https://docs.tooljet.com/docs/tooljet-api/
+  baseURL: https://your-tooljet-instance.com/api/ext
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/tooljet-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tooljet.com/docs/tooljet-api/
+  - type: JSONSchema
+    url: json-schema/tooljet-user-schema.json
+  - type: JSONSchema
+    url: json-schema/tooljet-group-schema.json
+  - type: JSONLDContext
+    url: json-ld/tooljet-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tooljet-vocabulary.yml
+  - type: GraphQL
+    url: graphql/tooljet-graphql.md
+- aid: tooljet:tooljet-users-api
+  name: ToolJet Users API
+  description: User management endpoints
+  humanURL: https://docs.tooljet.com/docs/tooljet-api/
+  baseURL: https://your-tooljet-instance.com/api/ext
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/tooljet-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tooljet.com/docs/tooljet-api/
+  - type: JSONSchema
+    url: json-schema/tooljet-user-schema.json
+  - type: JSONSchema
+    url: json-schema/tooljet-group-schema.json
+  - type: JSONLDContext
+    url: json-ld/tooljet-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tooljet-vocabulary.yml
+  - type: GraphQL
+    url: graphql/tooljet-graphql.md
+- aid: tooljet:tooljet-workspaces-api
+  name: ToolJet Workspaces API
+  description: Workspace management endpoints
+  humanURL: https://docs.tooljet.com/docs/tooljet-api/
+  baseURL: https://your-tooljet-instance.com/api/ext
+  tags:
+  - Workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/tooljet-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tooljet.com/docs/tooljet-api/
+  - type: JSONSchema
+    url: json-schema/tooljet-user-schema.json
+  - type: JSONSchema
+    url: json-schema/tooljet-group-schema.json
+  - type: JSONLDContext
+    url: json-ld/tooljet-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/tooljet-vocabulary.yml
+  - type: GraphQL
+    url: graphql/tooljet-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/tooljet-agentic-access.yml
