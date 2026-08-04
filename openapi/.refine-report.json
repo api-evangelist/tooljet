@@ -1,0 +1,20 @@
+{
+  "provider": "tooljet",
+  "sources": [
+    "tooljet-applications-api-openapi.yml",
+    "tooljet-groups-api-openapi.yml",
+    "tooljet-users-api-openapi.yml",
+    "tooljet-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "tooljet-applications-api-openapi.yml",
+    "tooljet-groups-api-openapi.yml",
+    "tooljet-users-api-openapi.yml",
+    "tooljet-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
