@@ -12,16 +12,17 @@
       "feed_url": "https://x.com/tooljet",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     },
     {
       "source": "https://blog.tooljet.com/rss/",
       "feed_url": "https://blog.tooljet.com/rss/",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     }
   ],
-  "post_count": 20,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 21,
+  "fetched": "2026-08-15T12:11:08Z"
 }
