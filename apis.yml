@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tooljet.pn
 url: https://raw.githubusercontent.com/api-evangelist/tooljet/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: 'ToolJet is an open-source low-code platform for building internal tools,
   dashboards, business applications, workflows, and AI agents. It provides a REST
   API (the ToolJet External API) that enables programmatic management of users, workspaces,
