@@ -1,0 +1,233 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ToolJet External Applications API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Applications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List apps in workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/ext/workspace/:workspaceId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "Workspace UUID"
+              }
+            ]
+          },
+          "docs": "List apps in workspace"
+        },
+        {
+          "info": {
+            "name": "Import an application into a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/ext/import/:workspaceId",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "Workspace UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Import an application into a workspace"
+        },
+        {
+          "info": {
+            "name": "Export an application",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{instance}/api/ext/export/:appId/:workspaceId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Application UUID"
+              },
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "path",
+                "description": "Workspace UUID"
+              },
+              {
+                "name": "exportTjdb",
+                "value": "",
+                "type": "query",
+                "description": "Include ToolJet database export"
+              },
+              {
+                "name": "appVersion",
+                "value": "",
+                "type": "query",
+                "description": "Specific version to export"
+              },
+              {
+                "name": "exportAllVersions",
+                "value": "",
+                "type": "query",
+                "description": "Export all versions"
+              }
+            ]
+          },
+          "docs": "Export an application"
+        },
+        {
+          "info": {
+            "name": "Pull app from Git",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/ext/pull-git",
+            "params": [
+              {
+                "name": "createMode",
+                "value": "",
+                "type": "query",
+                "description": "Create a new app if not found"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pull app from Git"
+        },
+        {
+          "info": {
+            "name": "Pull Git changes for an app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/ext/pull-changes/:appId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Application UUID"
+              },
+              {
+                "name": "createMode",
+                "value": "",
+                "type": "query",
+                "description": "Create a new app if not found"
+              }
+            ]
+          },
+          "docs": "Pull Git changes for an app"
+        },
+        {
+          "info": {
+            "name": "Push app version to Git",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/ext/push-git/:appId/:versionId",
+            "params": [
+              {
+                "name": "appId",
+                "value": "",
+                "type": "path",
+                "description": "Application UUID"
+              },
+              {
+                "name": "versionId",
+                "value": "",
+                "type": "path",
+                "description": "Version UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Push app version to Git"
+        },
+        {
+          "info": {
+            "name": "Auto-deploy an app version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/ext/auto-deploy/:appIdOrSlug",
+            "params": [
+              {
+                "name": "appIdOrSlug",
+                "value": "",
+                "type": "path",
+                "description": "Application UUID or slug"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Auto-deploy an app version"
+        },
+        {
+          "info": {
+            "name": "Save a named version of an app",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{instance}/api/ext/save-version/:appIdOrSlug",
+            "params": [
+              {
+                "name": "appIdOrSlug",
+                "value": "",
+                "type": "path",
+                "description": "Application UUID or slug"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Save a named version of an app"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1731 @@
+{
+  "item": [
+    {
+      "id": "56d790d4-dea5-4e8d-8b7e-e173c30fd729",
+      "name": "Applications",
+      "description": {
+        "content": "Application export, import, and Git sync endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd43c5a1-b505-4d25-ad8d-03817b91c4c3",
+          "name": "List apps in workspace",
+          "request": {
+            "name": "List apps in workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace",
+                ":workspaceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96bcd1b1-f0c1-477f-9537-9d10d3d9e278",
+              "name": "List of apps with versions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apps\": [\n    {\n      \"id\": \"94922374-c82b-a004-921f-a2bc9d508589\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"createdAt\": \"1947-04-11T16:37:23.395Z\",\n      \"organizationId\": \"2c3dfd37-f6ee-8eb9-6b69-90bcd1bf0db5\",\n      \"versions\": [\n        {\n          \"id\": \"4bdef5e4-56a8-31e6-eab4-05c360e141ed\",\n          \"name\": \"string\",\n          \"createdAt\": \"2025-03-19T21:44:13.760Z\"\n        },\n        {\n          \"id\": \"59fd8eab-6a74-9593-8749-c67d94c30ae4\",\n          \"name\": \"string\",\n          \"createdAt\": \"1988-09-10T06:54:35.880Z\"\n        }\n      ],\n      \"versionCount\": 8794\n    },\n    {\n      \"id\": \"fb1ea90a-1131-9d37-6f99-7149b93fa836\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"createdAt\": \"1996-08-12T19:33:00.880Z\",\n      \"organizationId\": \"89bba340-909b-6c75-d5df-701492440ab2\",\n      \"versions\": [\n        {\n          \"id\": \"7027ce7d-3a92-3dde-10e1-91e5392de590\",\n          \"name\": \"string\",\n          \"createdAt\": \"1981-01-10T00:39:49.555Z\"\n        },\n        {\n          \"id\": \"3ce3c268-04e8-19d2-f2a3-7aaf074abbc0\",\n          \"name\": \"string\",\n          \"createdAt\": \"2023-02-16T11:20:10.297Z\"\n        }\n      ],\n      \"versionCount\": 5121\n    }\n  ],\n  \"total\": 5642\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36589a97-5dd4-41fb-9622-015d816a7fa4",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7617b08c-5efc-49d9-b69e-1158579020d4",
+          "name": "Import an application into a workspace",
+          "request": {
+            "name": "Import an application into a workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "import",
+                ":workspaceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tooljet_version\": \"<string>\",\n  \"app\": [\n    {\n      \"definition\": {\n        \"key_0\": 7971.176726418713,\n        \"key_1\": \"string\",\n        \"key_2\": true,\n        \"key_3\": 876\n      }\n    },\n    {\n      \"definition\": {\n        \"key_0\": 1757.5889379630448,\n        \"key_1\": 7389.600430894666\n      }\n    }\n  ],\n  \"appName\": \"<string>\",\n  \"tooljet_database\": [\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 2425.942697340817,\n        \"key_1\": false,\n        \"key_2\": true\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 7564,\n        \"key_1\": 4237\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "029125e2-972e-4174-bb8d-37c264241795",
+              "name": "Application imported",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "import",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tooljet_version\": \"<string>\",\n  \"app\": [\n    {\n      \"definition\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"definition\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    }\n  ],\n  \"appName\": \"<string>\",\n  \"tooljet_database\": [\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 1646,\n        \"key_1\": 1421\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 5425.552857829077\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be5e92c1-8bac-49bb-8ac9-dad70e1f5385",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "import",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tooljet_version\": \"<string>\",\n  \"app\": [\n    {\n      \"definition\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"definition\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    }\n  ],\n  \"appName\": \"<string>\",\n  \"tooljet_database\": [\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 1646,\n        \"key_1\": 1421\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 5425.552857829077\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bdb1c8f-1f7c-4e79-bf74-eabf90c8a728",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "import",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tooljet_version\": \"<string>\",\n  \"app\": [\n    {\n      \"definition\": {\n        \"key_0\": true\n      }\n    },\n    {\n      \"definition\": {\n        \"key_0\": true,\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    }\n  ],\n  \"appName\": \"<string>\",\n  \"tooljet_database\": [\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 1646,\n        \"key_1\": 1421\n      }\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"table_name\": \"<string>\",\n      \"schema\": {\n        \"key_0\": 5425.552857829077\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e4320cf-82a4-475f-b2bb-a67536f5b1fe",
+          "name": "Export an application",
+          "request": {
+            "name": "Export an application",
+            "description": {},
+            "url": {
+              "path": [
+                "export",
+                ":appId",
+                ":workspaceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "exportTjdb",
+                  "value": "<boolean>",
+                  "description": "Include ToolJet database export"
+                },
+                {
+                  "disabled": false,
+                  "key": "appVersion",
+                  "value": "<string>",
+                  "description": "Specific version to export"
+                },
+                {
+                  "disabled": false,
+                  "key": "exportAllVersions",
+                  "value": "<boolean>",
+                  "description": "Export all versions"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) Application UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "874114ef-6ce5-401d-a757-44cffc836647",
+              "name": "Application export data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":appId",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exportTjdb",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "appVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exportAllVersions",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1285\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c828ee30-0e13-431f-9b4e-fb4ded1fd818",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":appId",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exportTjdb",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "appVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exportAllVersions",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1aa03f05-cef3-43e5-adb9-68b2eef4b200",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "export",
+                    ":appId",
+                    ":workspaceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "exportTjdb",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "appVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exportAllVersions",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cdfc095-7be8-44da-8459-b160204eef94",
+          "name": "Pull app from Git",
+          "request": {
+            "name": "Pull app from Git",
+            "description": {},
+            "url": {
+              "path": [
+                "pull-git"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "createMode",
+                  "value": "<boolean>",
+                  "description": "Create a new app if not found"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"appId\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d469009-015e-4091-84d1-40c88cc8b10f",
+              "name": "Git pull result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-git"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createMode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appId\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9862de6-59f0-4715-9973-ec6992db4be6",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-git"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createMode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"appId\": \"<string>\",\n  \"organizationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05769ba0-bbd9-45f1-ba47-0568ee051fd4",
+          "name": "Pull Git changes for an app",
+          "request": {
+            "name": "Pull Git changes for an app",
+            "description": {},
+            "url": {
+              "path": [
+                "pull-changes",
+                ":appId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "createMode",
+                  "value": "<boolean>",
+                  "description": "Create a new app if not found"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) Application UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2db2ccbc-b672-4535-bec9-26c6caffca7e",
+              "name": "Pull changes result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-changes",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createMode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0e8cc18f-684f-4db8-888b-20326e93475f",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pull-changes",
+                    ":appId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "createMode",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04e456c2-4ea8-4642-ab9a-84394851c2ca",
+          "name": "Push app version to Git",
+          "request": {
+            "name": "Push app version to Git",
+            "description": {},
+            "url": {
+              "path": [
+                "push-git",
+                ":appId",
+                ":versionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appId",
+                  "description": "(Required) Application UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "versionId",
+                  "description": "(Required) Version UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commitMessage\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a778148f-c449-40ef-a5d2-e0268318d032",
+              "name": "Push result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "push-git",
+                    ":appId",
+                    ":versionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionId",
+                      "description": "(Required) Version UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commitMessage\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcfe480c-7268-4373-b5c9-b3f432e1004a",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "push-git",
+                    ":appId",
+                    ":versionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appId",
+                      "description": "(Required) Application UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "versionId",
+                      "description": "(Required) Version UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commitMessage\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3c277954-5628-47bb-85ff-cf95a4ba3337",
+          "name": "Auto-deploy an app version",
+          "request": {
+            "name": "Auto-deploy an app version",
+            "description": {},
+            "url": {
+              "path": [
+                "auto-deploy",
+                ":appIdOrSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appIdOrSlug",
+                  "description": "(Required) Application UUID or slug"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"versionId\": \"<uuid>\",\n  \"versionName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7dd0e322-22b2-4d5e-9d9b-3489d9b0485f",
+              "name": "Deployment initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auto-deploy",
+                    ":appIdOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appIdOrSlug",
+                      "description": "(Required) Application UUID or slug"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"versionId\": \"<uuid>\",\n  \"versionName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "99fbe33b-af50-4075-9bb6-072415b1db13",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auto-deploy",
+                    ":appIdOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appIdOrSlug",
+                      "description": "(Required) Application UUID or slug"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"versionId\": \"<uuid>\",\n  \"versionName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec4bbff8-57b9-44bd-92cc-e105b327246e",
+          "name": "Save a named version of an app",
+          "request": {
+            "name": "Save a named version of an app",
+            "description": {},
+            "url": {
+              "path": [
+                "save-version",
+                ":appIdOrSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appIdOrSlug",
+                  "description": "(Required) Application UUID or slug"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb8d1c9e-2643-4e6d-b5b9-608308eea723",
+              "name": "Version saved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "save-version",
+                    ":appIdOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appIdOrSlug",
+                      "description": "(Required) Application UUID or slug"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c38675bc-218c-49e3-8618-61cb37aac3e6",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "save-version",
+                    ":appIdOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appIdOrSlug",
+                      "description": "(Required) Application UUID or slug"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2924,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the ToolJet deployment",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-tooljet-instance.com",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}/api/ext",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8b116b95-6912-4b70-86b8-fc0893b28c80",
+    "name": "ToolJet External Applications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.\n\n\nContact Support:\n Name: ToolJet",
+      "type": "text/plain"
+    }
+  }
+}

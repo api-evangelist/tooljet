@@ -1,0 +1,1398 @@
+{
+  "item": [
+    {
+      "id": "5c54ea7c-fde1-452a-b260-6c92e2168b86",
+      "name": "Groups",
+      "description": {
+        "content": "Group and permission management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "54eb30de-8c42-4b14-87ca-0f723cdf6ee8",
+          "name": "List groups in workspace",
+          "request": {
+            "name": "List groups in workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace",
+                ":workspaceId",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Filter groups by name"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "20",
+                  "description": "Results per page"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acb8c5e9-8984-4e77-8a30-0f960a6ad582",
+              "name": "List of groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"groups\": [\n    {\n      \"id\": \"fa38a9e8-0125-794e-4a68-84e80b2a54cb\",\n      \"name\": \"string\",\n      \"permissions\": {\n        \"appCreate\": false,\n        \"appDelete\": true,\n        \"folderCreate\": false,\n        \"folderDelete\": true,\n        \"orgConstantCRUD\": true,\n        \"workflowCreate\": true,\n        \"workflowDelete\": false,\n        \"dataSourceCreate\": false,\n        \"dataSourceDelete\": true,\n        \"appPromote\": true,\n        \"appRelease\": true\n      },\n      \"granularPermissions\": [\n        {\n          \"type\": \"app\",\n          \"applyToAll\": true,\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ],\n          \"permissions\": {\n            \"key_0\": true,\n            \"key_1\": 8152\n          }\n        },\n        {\n          \"type\": \"workflow\",\n          \"applyToAll\": true,\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ],\n          \"permissions\": {\n            \"key_0\": 2594,\n            \"key_1\": 8404.407914375917\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"43baa83a-bcab-5d88-b38f-9613b93d3a66\",\n      \"name\": \"string\",\n      \"permissions\": {\n        \"appCreate\": false,\n        \"appDelete\": false,\n        \"folderCreate\": false,\n        \"folderDelete\": false,\n        \"orgConstantCRUD\": false,\n        \"workflowCreate\": true,\n        \"workflowDelete\": true,\n        \"dataSourceCreate\": true,\n        \"dataSourceDelete\": false,\n        \"appPromote\": true,\n        \"appRelease\": true\n      },\n      \"granularPermissions\": [\n        {\n          \"type\": \"app\",\n          \"applyToAll\": false,\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ],\n          \"permissions\": {\n            \"key_0\": \"string\",\n            \"key_1\": 7172.095723687821\n          }\n        },\n        {\n          \"type\": \"app\",\n          \"applyToAll\": true,\n          \"resources\": [\n            \"string\",\n            \"string\"\n          ],\n          \"permissions\": {\n            \"key_0\": false\n          }\n        }\n      ]\n    }\n  ],\n  \"total\": 8494\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2302fff6-8c4e-4b6c-8ae2-dd50070f4e54",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a0a3572-a0a8-415e-bdaf-3a6dc68a064d",
+          "name": "Create a group in workspace",
+          "request": {
+            "name": "Create a group in workspace",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace",
+                ":workspaceId",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": \"string\",\n        \"key_1\": true\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": 844.0519952017212,\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfa9f448-dcea-4deb-871b-5e99b6e0ce56",
+              "name": "Group created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "638223ae-c39f-47c9-b5b9-39e454677eed",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba4d5310-ab80-459e-a6c1-f8f8cf8259fb",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7f8c01f-7d3e-4117-aa64-454600694a96",
+          "name": "Get a group by ID",
+          "request": {
+            "name": "Get a group by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace",
+                ":workspaceId",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) Group UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1cc4d10-1c72-416c-bb33-bf68e1c5603e",
+              "name": "Group details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"fdaaf670-dcb7-faaa-c297-119a41e8c29a\",\n  \"name\": \"string\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": 5551.600360075042\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": 9750.767240335665\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08f4795c-9347-49b3-8a86-e8c864cacdef",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e4420cd-9d3f-4591-ae9a-958cabe9e2b8",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4afe664f-d81c-4030-a3d2-16fb64691598",
+          "name": "Update a group",
+          "request": {
+            "name": "Update a group",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace",
+                ":workspaceId",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) Group UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": false,\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": \"string\",\n        \"key_1\": 7411.737045639131,\n        \"key_2\": 6046.998196483124,\n        \"key_3\": false\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b095e27-5de7-46d2-82d2-1d5b27af0069",
+              "name": "Group updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5251\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": 9860.935516722417,\n        \"key_1\": false,\n        \"key_2\": 7125,\n        \"key_3\": \"string\",\n        \"key_4\": 6865\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09cdd79f-4005-4a16-91fc-6f5dd38a0fe7",
+              "name": "Invalid request body or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5251\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": 9860.935516722417,\n        \"key_1\": false,\n        \"key_2\": 7125,\n        \"key_3\": \"string\",\n        \"key_4\": 6865\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "036c75a2-89dd-4d8e-ab48-31dfb56ee808",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5251\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": 9860.935516722417,\n        \"key_1\": false,\n        \"key_2\": 7125,\n        \"key_3\": \"string\",\n        \"key_4\": 6865\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1fa0df3-a80c-4a85-83f4-8b2ff8888f11",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"permissions\": {\n    \"appCreate\": \"<boolean>\",\n    \"appDelete\": \"<boolean>\",\n    \"folderCreate\": \"<boolean>\",\n    \"folderDelete\": \"<boolean>\",\n    \"orgConstantCRUD\": \"<boolean>\",\n    \"workflowCreate\": \"<boolean>\",\n    \"workflowDelete\": \"<boolean>\",\n    \"dataSourceCreate\": \"<boolean>\",\n    \"dataSourceDelete\": \"<boolean>\",\n    \"appPromote\": \"<boolean>\",\n    \"appRelease\": \"<boolean>\"\n  },\n  \"granularPermissions\": [\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": \"string\",\n        \"key_1\": 5251\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"applyToAll\": \"<boolean>\",\n      \"resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"permissions\": {\n        \"key_0\": 9860.935516722417,\n        \"key_1\": false,\n        \"key_2\": 7125,\n        \"key_3\": \"string\",\n        \"key_4\": 6865\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb6b3bfa-5389-4aaf-8452-89d09138cfb1",
+          "name": "Delete a group",
+          "request": {
+            "name": "Delete a group",
+            "description": {},
+            "url": {
+              "path": [
+                "workspace",
+                ":workspaceId",
+                "groups",
+                ":groupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workspaceId",
+                  "description": "(Required) Workspace UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) Group UUID"
+                },
+                {
+                  "description": "Hostname of the ToolJet deployment",
+                  "type": "any",
+                  "value": "{{instance}}",
+                  "key": "instance"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cb4579f-b19a-4529-85f0-a2e1ab3a5353",
+              "name": "Group deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "98cc3833-14d2-4eec-848f-428991d10128",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa6bfa0d-6dce-4cfc-aa67-18f612930830",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "workspace",
+                    ":workspaceId",
+                    "groups",
+                    ":groupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workspaceId",
+                      "description": "(Required) Workspace UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) Group UUID"
+                    },
+                    {
+                      "description": "Hostname of the ToolJet deployment",
+                      "type": "any",
+                      "value": "{{instance}}",
+                      "key": "instance"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8791,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the ToolJet deployment",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "your-tooljet-instance.com",
+      "key": "instance"
+    },
+    {
+      "type": "string",
+      "value": "https://{{instance}}/api/ext",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3537c020-12b3-4774-91f7-48cb6e827614",
+    "name": "ToolJet External Applications Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.\n\n\nContact Support:\n Name: ToolJet",
+      "type": "text/plain"
+    }
+  }
+}
