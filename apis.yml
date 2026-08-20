@@ -31,6 +31,15 @@ description: 'ToolJet is an open-source low-code platform for building internal 
 
   '
 tags:
+- Low-Code
+- Internal Tools
+- Open-Source
+- Application Builder
+- Workflow-Automation
+- No-Code
+- Dashboards
+- AI Agents
+tags_raw:
 - low-code
 - internal tools
 - open-source
@@ -46,6 +55,8 @@ apis:
   humanURL: https://docs.tooljet.com/docs/tooljet-api/
   baseURL: https://your-tooljet-instance.com/api/ext
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -68,6 +79,8 @@ apis:
   humanURL: https://docs.tooljet.com/docs/tooljet-api/
   baseURL: https://your-tooljet-instance.com/api/ext
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -90,6 +103,8 @@ apis:
   humanURL: https://docs.tooljet.com/docs/tooljet-api/
   baseURL: https://your-tooljet-instance.com/api/ext
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
