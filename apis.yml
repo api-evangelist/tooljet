@@ -43,12 +43,12 @@ description: 'ToolJet is an open-source low-code platform for building internal 
 
   '
 tags:
-- Low-Code
-- Internal Tools
+- low-code
+- internal tools
 - Open-Source
-- Application Builder
-- Workflow-Automation
-- No-Code
+- application builder
+- workflow automation
+- no-code
 - Dashboards
 - AI Agents
 tags_raw:
@@ -188,8 +188,6 @@ common:
   url: finops/tooljet-finops.yml
 - type: BlogRSS
   url: https://blog.tooljet.com/rss/
-- type: Blog
-  url: blogs/blogs.json
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
