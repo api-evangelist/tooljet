@@ -30,7 +30,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tooljet.png
 url: https://raw.githubusercontent.com/api-evangelist/tooljet/refs/heads/main/apis.yml
 created: 2026-06-12
-modified: 2026-06-12
+modified: '2026-09-06'
 specificationVersion: '0.23'
 description: 'ToolJet is an open-source low-code platform for building internal tools,
   dashboards, business applications, workflows, and AI agents. It provides a REST
@@ -189,6 +189,12 @@ common:
   url: finops/tooljet-finops.yml
 - type: BlogRSS
   url: https://blog.tooljet.com/rss/
+- name: MCP Server Source
+  url: https://github.com/ToolJet/tooljet-mcp
+  type: MCPServer
+- name: MCP Documentation
+  url: https://blog.tooljet.com/tooljet-mcp-model-context-protocol/
+  type: MCPDocumentation
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
