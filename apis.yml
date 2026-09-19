@@ -140,6 +140,8 @@ apis:
   humanURL: https://docs.tooljet.com/docs/tooljet-api/
   baseURL: https://your-tooljet-instance.com/api/ext
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
