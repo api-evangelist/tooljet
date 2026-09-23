@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: ToolJet External Applications API
-  description: 'The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
-
-    '
+  description: The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
   version: 1.0.0
   contact:
     name: ToolJet
@@ -235,14 +233,34 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    AutoDeployBodyDto:
+    ErrorResponse:
       type: object
       properties:
-        versionId:
+        statusCode:
+          type: integer
+        message:
           type: string
-          format: uuid
-        versionName:
+        error:
           type: string
     WorkspaceAppsResponseDto:
       type: object
@@ -253,28 +271,6 @@ components:
             $ref: '#/components/schemas/AppWithVersionsDto'
         total:
           type: integer
-    AppWithVersionsDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        slug:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        organizationId:
-          type: string
-          format: uuid
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/VersionDto'
-        versionCount:
-          type: integer
     AppGitPushDto:
       type: object
       required:
@@ -282,6 +278,22 @@ components:
       properties:
         commitMessage:
           type: string
+    AppGitPullDto:
+      type: object
+      required:
+      - appId
+      - organizationId
+      properties:
+        appId:
+          type: string
+        organizationId:
+          type: string
+    SaveVersionBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 25
     AppImportRequestDto:
       type: object
       required:
@@ -330,50 +342,36 @@ components:
         createdAt:
           type: string
           format: date-time
-    ErrorResponse:
+    AutoDeployBodyDto:
       type: object
       properties:
-        statusCode:
-          type: integer
-        message:
+        versionId:
           type: string
-        error:
+          format: uuid
+        versionName:
           type: string
-    AppGitPullDto:
-      type: object
-      required:
-      - appId
-      - organizationId
-      properties:
-        appId:
-          type: string
-        organizationId:
-          type: string
-    SaveVersionBodyDto:
+    AppWithVersionsDto:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
-          maxLength: 25
-  responses:
-    Unauthorized:
-      description: Authentication required or invalid token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        slug:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        organizationId:
+          type: string
+          format: uuid
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionDto'
+        versionCount:
+          type: integer
   parameters:
     WorkspaceId:
       name: workspaceId

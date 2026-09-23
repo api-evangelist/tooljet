@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: ToolJet External Applications Groups API
-  description: 'The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
-
-    '
+  title: ToolJet External Groups API
+  description: The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
   version: 1.0.0
   contact:
     name: ToolJet
@@ -147,6 +145,68 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    CreateGroupExternalDto:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
+    WorkspacePermissionsDto:
+      type: object
+      properties:
+        appCreate:
+          type: boolean
+        appDelete:
+          type: boolean
+        folderCreate:
+          type: boolean
+        folderDelete:
+          type: boolean
+        orgConstantCRUD:
+          type: boolean
+        workflowCreate:
+          type: boolean
+        workflowDelete:
+          type: boolean
+        dataSourceCreate:
+          type: boolean
+        dataSourceDelete:
+          type: boolean
+        appPromote:
+          type: boolean
+        appRelease:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        error:
+          type: string
+    UpdateGroupExternalDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
     Group:
       type: object
       properties:
@@ -155,19 +215,6 @@ components:
           format: uuid
         name:
           type: string
-        permissions:
-          $ref: '#/components/schemas/WorkspacePermissionsDto'
-        granularPermissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GranularPermissionDto'
-    UpdateGroupExternalDto:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          description: Group name (alphanumeric, spaces, hyphens, underscores only)
         permissions:
           $ref: '#/components/schemas/WorkspacePermissionsDto'
         granularPermissions:
@@ -198,62 +245,7 @@ components:
         permissions:
           type: object
           additionalProperties: true
-    ErrorResponse:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        error:
-          type: string
-    WorkspacePermissionsDto:
-      type: object
-      properties:
-        appCreate:
-          type: boolean
-        appDelete:
-          type: boolean
-        folderCreate:
-          type: boolean
-        folderDelete:
-          type: boolean
-        orgConstantCRUD:
-          type: boolean
-        workflowCreate:
-          type: boolean
-        workflowDelete:
-          type: boolean
-        dataSourceCreate:
-          type: boolean
-        dataSourceDelete:
-          type: boolean
-        appPromote:
-          type: boolean
-        appRelease:
-          type: boolean
-    CreateGroupExternalDto:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          description: Group name (alphanumeric, spaces, hyphens, underscores only)
-        permissions:
-          $ref: '#/components/schemas/WorkspacePermissionsDto'
-        granularPermissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GranularPermissionDto'
   responses:
-    Unauthorized:
-      description: Authentication required or invalid token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request body or parameters
       content:
@@ -266,15 +258,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
     GroupId:
       name: groupId
       in: path
@@ -283,6 +273,14 @@ components:
         type: string
         format: uuid
       description: Group UUID
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
   securitySchemes:
     BasicAuth:
       type: http

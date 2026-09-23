@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: ToolJet External Applications Users API
-  description: 'The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
-
-    '
+  title: ToolJet External Users API
+  description: The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.
   version: 1.0.0
   contact:
     name: ToolJet
@@ -206,42 +204,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication required or invalid token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request body or parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    WorkspaceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        role:
-          $ref: '#/components/schemas/UserRole'
-        status:
-          $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
     UserRole:
       type: string
       enum:
@@ -249,27 +212,14 @@ components:
       - developer
       - viewer
       - end-user
-    UpdateGivenWorkspaceDto:
+    ErrorResponse:
       type: object
       properties:
-        id:
+        statusCode:
+          type: integer
+        message:
           type: string
-          format: uuid
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
-    GroupDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
+        error:
           type: string
     CreateUserDto:
       type: object
@@ -293,20 +243,66 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
+    WorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    UpdateUserMetadataDto:
+      type: object
+      required:
+      - userDetails
+      properties:
+        userDetails:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+              value:
+                type: string
     Status:
       type: string
       enum:
       - active
       - archived
       - invited
-    ErrorResponse:
+    GroupDto:
       type: object
       properties:
-        statusCode:
-          type: integer
-        message:
+        id:
           type: string
-        error:
+          format: uuid
+        name:
+          type: string
+    UpdateUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        defaultOrganizationId:
           type: string
     User:
       type: object
@@ -327,38 +323,47 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
-    UpdateUserDto:
+    UpdateGivenWorkspaceDto:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
         name:
-          type: string
-        email:
-          type: string
-          format: email
-        password:
           type: string
         status:
           $ref: '#/components/schemas/Status'
-        defaultOrganizationId:
-          type: string
-    UpdateUserMetadataDto:
-      type: object
-      required:
-      - userDetails
-      properties:
-        userDetails:
+        groups:
           type: array
           items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-              value:
-                type: string
+            $ref: '#/components/schemas/GroupDto'
+  responses:
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID
     WorkspaceId:
       name: workspaceId
       in: path
@@ -367,13 +372,6 @@ components:
         type: string
         format: uuid
       description: Workspace UUID
-    UserId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User UUID
   securitySchemes:
     BasicAuth:
       type: http
