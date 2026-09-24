@@ -46,9 +46,9 @@ description: 'ToolJet is an open-source low-code platform for building internal 
 tags:
 - Low-Code
 - Internal Tools
-- Open-Source
+- Open Source
 - Application Builder
-- Workflow-Automation
+- Workflow Automation
 - No-Code
 - Dashboards
 - AI Agents
@@ -61,6 +61,8 @@ tags_raw:
 - no-code
 - dashboards
 - AI agents
+- Open-Source
+- Workflow-Automation
 apis:
 - aid: tooljet:tooljet-applications-api
   name: ToolJet Applications API
@@ -84,8 +86,6 @@ apis:
     url: json-ld/tooljet-context.jsonld
   - type: Vocabulary
     url: vocabulary/tooljet-vocabulary.yml
-  - type: GraphQL
-    url: graphql/tooljet-graphql.md
 - aid: tooljet:tooljet-groups-api
   name: ToolJet Groups API
   description: Group and permission management endpoints
@@ -108,8 +108,6 @@ apis:
     url: json-ld/tooljet-context.jsonld
   - type: Vocabulary
     url: vocabulary/tooljet-vocabulary.yml
-  - type: GraphQL
-    url: graphql/tooljet-graphql.md
 - aid: tooljet:tooljet-users-api
   name: ToolJet Users API
   description: User management endpoints
@@ -132,8 +130,6 @@ apis:
     url: json-ld/tooljet-context.jsonld
   - type: Vocabulary
     url: vocabulary/tooljet-vocabulary.yml
-  - type: GraphQL
-    url: graphql/tooljet-graphql.md
 - aid: tooljet:tooljet-workspaces-api
   name: ToolJet Workspaces API
   description: Workspace management endpoints
@@ -156,8 +152,6 @@ apis:
     url: json-ld/tooljet-context.jsonld
   - type: Vocabulary
     url: vocabulary/tooljet-vocabulary.yml
-  - type: GraphQL
-    url: graphql/tooljet-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/tooljet-agentic-access.yml
