@@ -61,14 +61,24 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
   schemas:
-    UserRole:
-      type: string
-      enum:
-      - admin
-      - developer
-      - viewer
-      - end-user
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
     ErrorResponse:
       type: object
       properties:
@@ -78,6 +88,13 @@ components:
           type: string
         error:
           type: string
+    UserRole:
+      type: string
+      enum:
+      - admin
+      - developer
+      - viewer
+      - end-user
     EditUserRoleDto:
       type: object
       required:
@@ -88,36 +105,19 @@ components:
         userId:
           type: string
           format: uuid
-    Workspace:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
   responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication required or invalid token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     BasicAuth:
       type: http

@@ -205,13 +205,34 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    UserRole:
-      type: string
-      enum:
-      - admin
-      - developer
-      - viewer
-      - end-user
+    UpdateGivenWorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    UpdateUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        defaultOrganizationId:
+          type: string
     ErrorResponse:
       type: object
       properties:
@@ -221,6 +242,79 @@ components:
           type: string
         error:
           type: string
+    WorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        status:
+          $ref: '#/components/schemas/Status'
+        defaultOrganizationId:
+          type: string
+        workspaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkspaceDto'
+    UserRole:
+      type: string
+      enum:
+      - admin
+      - developer
+      - viewer
+      - end-user
+    UpdateUserMetadataDto:
+      type: object
+      required:
+      - userDetails
+      properties:
+        userDetails:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+    GroupDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    Status:
+      type: string
+      enum:
+      - active
+      - archived
+      - invited
     CreateUserDto:
       type: object
       required:
@@ -243,103 +337,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
-    WorkspaceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        role:
-          $ref: '#/components/schemas/UserRole'
-        status:
-          $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
-    UpdateUserMetadataDto:
-      type: object
-      required:
-      - userDetails
-      properties:
-        userDetails:
-          type: array
-          items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-              value:
-                type: string
-    Status:
-      type: string
-      enum:
-      - active
-      - archived
-      - invited
-    GroupDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-    UpdateUserDto:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        defaultOrganizationId:
-          type: string
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        status:
-          $ref: '#/components/schemas/Status'
-        defaultOrganizationId:
-          type: string
-        workspaces:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkspaceDto'
-    UpdateGivenWorkspaceDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
   responses:
-    BadRequest:
-      description: Invalid request body or parameters
+    Unauthorized:
+      description: Authentication required or invalid token
       content:
         application/json:
           schema:
@@ -350,8 +350,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or invalid token
+    BadRequest:
+      description: Invalid request body or parameters
       content:
         application/json:
           schema:

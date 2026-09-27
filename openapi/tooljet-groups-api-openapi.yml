@@ -145,21 +145,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    CreateGroupExternalDto:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          description: Group name (alphanumeric, spaces, hyphens, underscores only)
-        permissions:
-          $ref: '#/components/schemas/WorkspacePermissionsDto'
-        granularPermissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GranularPermissionDto'
     WorkspacePermissionsDto:
       type: object
       properties:
@@ -207,20 +192,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GranularPermissionDto'
-    Group:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        permissions:
-          $ref: '#/components/schemas/WorkspacePermissionsDto'
-        granularPermissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GranularPermissionDto'
     GranularPermissionDto:
       type: object
       required:
@@ -245,7 +216,42 @@ components:
         permissions:
           type: object
           additionalProperties: true
+    CreateGroupExternalDto:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
   responses:
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request body or parameters
       content:
@@ -254,12 +260,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or invalid token
       content:
         application/json:
           schema:
