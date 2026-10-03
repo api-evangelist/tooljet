@@ -205,22 +205,34 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    UpdateGivenWorkspaceDto:
+    UserRole:
+      type: string
+      enum:
+      - admin
+      - developer
+      - viewer
+      - end-user
+    Status:
+      type: string
+      enum:
+      - active
+      - archived
+      - invited
+    ErrorResponse:
       type: object
       properties:
-        id:
+        statusCode:
+          type: integer
+        message:
           type: string
-          format: uuid
-        name:
+        error:
           type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
-    UpdateUserDto:
+    CreateUserDto:
       type: object
+      required:
+      - name
+      - email
+      - workspaces
       properties:
         name:
           type: string
@@ -233,15 +245,10 @@ components:
           $ref: '#/components/schemas/Status'
         defaultOrganizationId:
           type: string
-    ErrorResponse:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        error:
-          type: string
+        workspaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkspaceDto'
     WorkspaceDto:
       type: object
       properties:
@@ -277,13 +284,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
-    UserRole:
-      type: string
-      enum:
-      - admin
-      - developer
-      - viewer
-      - end-user
+    UpdateGivenWorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    GroupDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
     UpdateUserMetadataDto:
       type: object
       required:
@@ -301,26 +323,8 @@ components:
                 type: string
               value:
                 type: string
-    GroupDto:
+    UpdateUserDto:
       type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-    Status:
-      type: string
-      enum:
-      - active
-      - archived
-      - invited
-    CreateUserDto:
-      type: object
-      required:
-      - name
-      - email
-      - workspaces
       properties:
         name:
           type: string
@@ -333,17 +337,23 @@ components:
           $ref: '#/components/schemas/Status'
         defaultOrganizationId:
           type: string
-        workspaces:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkspaceDto'
+  parameters:
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID
   responses:
-    Unauthorized:
-      description: Authentication required or invalid token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found
       content:
@@ -356,22 +366,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    UserId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User UUID
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     BasicAuth:
       type: http
