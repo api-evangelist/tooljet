@@ -234,12 +234,44 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    SaveVersionBodyDto:
+    AppWithVersionsDto:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
-          maxLength: 25
+        slug:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        organizationId:
+          type: string
+          format: uuid
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/VersionDto'
+        versionCount:
+          type: integer
+    WorkspaceAppsResponseDto:
+      type: object
+      properties:
+        apps:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppWithVersionsDto'
+        total:
+          type: integer
+    AppGitPushDto:
+      type: object
+      required:
+      - commitMessage
+      properties:
+        commitMessage:
+          type: string
     VersionDto:
       type: object
       required:
@@ -254,6 +286,30 @@ components:
         createdAt:
           type: string
           format: date-time
+    SaveVersionBodyDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 25
+    AppGitPullDto:
+      type: object
+      required:
+      - appId
+      - organizationId
+      properties:
+        appId:
+          type: string
+        organizationId:
+          type: string
+    AutoDeployBodyDto:
+      type: object
+      properties:
+        versionId:
+          type: string
+          format: uuid
+        versionName:
+          type: string
     ErrorResponse:
       type: object
       properties:
@@ -262,13 +318,6 @@ components:
         message:
           type: string
         error:
-          type: string
-    AppGitPushDto:
-      type: object
-      required:
-      - commitMessage
-      properties:
-        commitMessage:
           type: string
     AppImportRequestDto:
       type: object
@@ -304,65 +353,13 @@ components:
               schema:
                 type: object
                 additionalProperties: true
-    WorkspaceAppsResponseDto:
-      type: object
-      properties:
-        apps:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppWithVersionsDto'
-        total:
-          type: integer
-    AppGitPullDto:
-      type: object
-      required:
-      - appId
-      - organizationId
-      properties:
-        appId:
-          type: string
-        organizationId:
-          type: string
-    AutoDeployBodyDto:
-      type: object
-      properties:
-        versionId:
-          type: string
-          format: uuid
-        versionName:
-          type: string
-    AppWithVersionsDto:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        slug:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        organizationId:
-          type: string
-          format: uuid
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/VersionDto'
-        versionCount:
-          type: integer
-  parameters:
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
   responses:
+    Unauthorized:
+      description: Authentication required or invalid token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: Resource not found
       content:
@@ -375,12 +372,15 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or invalid token
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
   securitySchemes:
     BasicAuth:
       type: http

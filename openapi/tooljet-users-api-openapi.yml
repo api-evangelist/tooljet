@@ -205,28 +205,36 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    UserRole:
-      type: string
-      enum:
-      - admin
-      - developer
-      - viewer
-      - end-user
     Status:
       type: string
       enum:
       - active
       - archived
       - invited
-    ErrorResponse:
+    GroupDto:
       type: object
       properties:
-        statusCode:
-          type: integer
-        message:
+        id:
           type: string
-        error:
+          format: uuid
+        name:
           type: string
+    WorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
     CreateUserDto:
       type: object
       required:
@@ -249,22 +257,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
-    WorkspaceDto:
+    UpdateUserDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         name:
           type: string
-        role:
-          $ref: '#/components/schemas/UserRole'
+        email:
+          type: string
+          format: email
+        password:
+          type: string
         status:
           $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
+        defaultOrganizationId:
+          type: string
     User:
       type: object
       properties:
@@ -284,6 +290,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
+    UserRole:
+      type: string
+      enum:
+      - admin
+      - developer
+      - viewer
+      - end-user
     UpdateGivenWorkspaceDto:
       type: object
       properties:
@@ -298,13 +311,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupDto'
-    GroupDto:
+    ErrorResponse:
       type: object
       properties:
-        id:
+        statusCode:
+          type: integer
+        message:
           type: string
-          format: uuid
-        name:
+        error:
           type: string
     UpdateUserMetadataDto:
       type: object
@@ -323,45 +337,9 @@ components:
                 type: string
               value:
                 type: string
-    UpdateUserDto:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        defaultOrganizationId:
-          type: string
-  parameters:
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
-    UserId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User UUID
   responses:
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request body or parameters
       content:
         application/json:
           schema:
@@ -372,6 +350,28 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request body or parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
   securitySchemes:
     BasicAuth:
       type: http
