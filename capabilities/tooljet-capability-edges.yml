@@ -1,0 +1,35 @@
+slug: tooljet
+provider: ToolJet
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Groups
+  spec_file: tooljet-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /workspace/{workspaceId}/groups  createGroup  Create a group in workspace; schemas WorkspacePermissionsDto,
+    GranularPermissionDto
+  reason: CRUD over permission groups carrying workspace and granular permission payloads — authorisation
+    group administration, i.e. access management for the platform.
+- tag: Users
+  spec_file: tooljet-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /users  createUser  Create a user; PATCH /user/{id}/workspace/{workspaceId}  updateUserWorkspace  Update
+    user workspace membership; schema UserRole
+  reason: User account provisioning, workspace membership and role assignment on a software platform —
+    identity and access administration, not HR employee records.

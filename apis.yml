@@ -153,6 +153,9 @@ apis:
   - type: Vocabulary
     url: vocabulary/tooljet-vocabulary.yml
 common:
+- type: CapabilityMap
+  url: capabilities/tooljet-capability-edges.yml
+  name: ToolJet Business Capability Map
 - type: AgenticAccess
   url: agentic-access/tooljet-agentic-access.yml
 - type: TrustCenter
