@@ -204,13 +204,39 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    UserId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User UUID
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
   schemas:
-    Status:
+    UserRole:
       type: string
       enum:
-      - active
-      - archived
-      - invited
+      - admin
+      - developer
+      - viewer
+      - end-user
+    ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        error:
+          type: string
     GroupDto:
       type: object
       properties:
@@ -219,6 +245,37 @@ components:
           format: uuid
         name:
           type: string
+    UpdateGivenWorkspaceDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupDto'
+    UpdateUserMetadataDto:
+      type: object
+      required:
+      - userDetails
+      properties:
+        userDetails:
+          type: array
+          items:
+            type: object
+            required:
+            - key
+            - value
+            properties:
+              key:
+                type: string
+              value:
+                type: string
     WorkspaceDto:
       type: object
       properties:
@@ -257,20 +314,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
-    UpdateUserDto:
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        defaultOrganizationId:
-          type: string
+    Status:
+      type: string
+      enum:
+      - active
+      - archived
+      - invited
     User:
       type: object
       properties:
@@ -290,62 +339,29 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkspaceDto'
-    UserRole:
-      type: string
-      enum:
-      - admin
-      - developer
-      - viewer
-      - end-user
-    UpdateGivenWorkspaceDto:
+    UpdateUserDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
           type: string
         status:
           $ref: '#/components/schemas/Status'
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupDto'
-    ErrorResponse:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
+        defaultOrganizationId:
           type: string
-        error:
-          type: string
-    UpdateUserMetadataDto:
-      type: object
-      required:
-      - userDetails
-      properties:
-        userDetails:
-          type: array
-          items:
-            type: object
-            required:
-            - key
-            - value
-            properties:
-              key:
-                type: string
-              value:
-                type: string
   responses:
-    NotFound:
-      description: Resource not found
+    Unauthorized:
+      description: Authentication required or invalid token
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication required or invalid token
+    NotFound:
+      description: Resource not found
       content:
         application/json:
           schema:
@@ -356,22 +372,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    UserId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User UUID
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
   securitySchemes:
     BasicAuth:
       type: http

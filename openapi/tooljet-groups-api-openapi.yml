@@ -144,15 +144,71 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    GroupId:
+      name: groupId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Group UUID
+    WorkspaceId:
+      name: workspaceId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Workspace UUID
   schemas:
-    Group:
+    WorkspacePermissionsDto:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
+        appCreate:
+          type: boolean
+        appDelete:
+          type: boolean
+        folderCreate:
+          type: boolean
+        folderDelete:
+          type: boolean
+        orgConstantCRUD:
+          type: boolean
+        workflowCreate:
+          type: boolean
+        workflowDelete:
+          type: boolean
+        dataSourceCreate:
+          type: boolean
+        dataSourceDelete:
+          type: boolean
+        appPromote:
+          type: boolean
+        appRelease:
+          type: boolean
+    CreateGroupExternalDto:
+      type: object
+      required:
+      - name
+      properties:
         name:
           type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
+        permissions:
+          $ref: '#/components/schemas/WorkspacePermissionsDto'
+        granularPermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/GranularPermissionDto'
+    UpdateGroupExternalDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          description: Group name (alphanumeric, spaces, hyphens, underscores only)
         permissions:
           $ref: '#/components/schemas/WorkspacePermissionsDto'
         granularPermissions:
@@ -183,53 +239,14 @@ components:
         permissions:
           type: object
           additionalProperties: true
-    WorkspacePermissionsDto:
+    Group:
       type: object
       properties:
-        appCreate:
-          type: boolean
-        appDelete:
-          type: boolean
-        folderCreate:
-          type: boolean
-        folderDelete:
-          type: boolean
-        orgConstantCRUD:
-          type: boolean
-        workflowCreate:
-          type: boolean
-        workflowDelete:
-          type: boolean
-        dataSourceCreate:
-          type: boolean
-        dataSourceDelete:
-          type: boolean
-        appPromote:
-          type: boolean
-        appRelease:
-          type: boolean
-    UpdateGroupExternalDto:
-      type: object
-      properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
-          maxLength: 50
-          description: Group name (alphanumeric, spaces, hyphens, underscores only)
-        permissions:
-          $ref: '#/components/schemas/WorkspacePermissionsDto'
-        granularPermissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/GranularPermissionDto'
-    CreateGroupExternalDto:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          maxLength: 50
-          description: Group name (alphanumeric, spaces, hyphens, underscores only)
         permissions:
           $ref: '#/components/schemas/WorkspacePermissionsDto'
         granularPermissions:
@@ -264,23 +281,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    GroupId:
-      name: groupId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Group UUID
-    WorkspaceId:
-      name: workspaceId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Workspace UUID
   securitySchemes:
     BasicAuth:
       type: http
