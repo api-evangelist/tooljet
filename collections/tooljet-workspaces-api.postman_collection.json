@@ -1,429 +1,398 @@
 {
+  "info": {
+    "_postman_id": "6a144432-1443-49d2-bc05-0fd030ae9708",
+    "name": "ToolJet External Workspaces API",
+    "description": "The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.\n\nContact Support:\n Name: ToolJet",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:56:11.000Z",
+    "updatedAt": "2026-10-21T20:56:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6a144432-1443-49d2-bc05-0fd030ae9708"
+  },
   "item": [
     {
-      "id": "7f21ed60-ab3c-44a5-bbb0-6f29327021f7",
-      "name": "Workspaces",
-      "description": {
-        "content": "Workspace management endpoints",
-        "type": "text/plain"
-      },
+      "name": "workspaces",
       "item": [
         {
-          "id": "c7d4d0b1-f34d-4a1c-b89d-08874d56316f",
           "name": "List all workspaces",
+          "id": "f0255b81-f9be-4876-a90e-62c5ebdea7d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List all workspaces",
-            "description": {},
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/workspaces",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "workspaces"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
               ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            }
           },
           "response": [
             {
-              "id": "c643b22e-b89a-4cf2-9435-6d4b25caf358",
+              "id": "9772ddfc-4447-476e-8fa9-b8a8b6606f29",
               "name": "List of workspaces",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"4904ed86-146a-8a58-cb5d-d4b8a610df95\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"604715f1-99b1-1682-0261-2848410a0e3c\",\n    \"name\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "85e75ada-ddd6-4499-9fc7-b5482c3d9d0b",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
                   {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 6439,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1cd81541-4266-4bcc-b8b9-3fefbe5dcf09",
-          "name": "Update user role in a workspace",
-          "request": {
-            "name": "Update user role in a workspace",
-            "description": {},
-            "url": {
-              "path": [
-                "update-user-role",
-                "workspace",
-                ":workspaceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "workspaceId",
-                  "description": "(Required) Workspace UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"role\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f1543bb8-687d-41cc-b554-d8bb299820eb",
-              "name": "User role updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "update-user-role",
-                    "workspace",
-                    ":workspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: basic",
                     "key": "Authorization",
                     "value": "Basic <credentials>"
                   }
                 ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"role\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                "url": {
+                  "raw": "{{baseUrl}}/workspaces",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workspaces"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
-                  "value": "text/plain"
+                  "value": "application/json"
                 }
               ],
-              "body": "",
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-10-21T20:56:12.000Z",
+              "updatedAt": "2026-10-21T20:56:12.000Z",
+              "uid": "35240-9772ddfc-4447-476e-8fa9-b8a8b6606f29"
             },
             {
-              "id": "6a9ca111-b008-4553-9384-cfee8a62d3f3",
+              "id": "afa62f06-58dd-46f2-a172-c09e7b4a8c52",
               "name": "Authentication required or invalid token",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "update-user-role",
-                    "workspace",
-                    ":workspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"role\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                "url": {
+                  "raw": "{{baseUrl}}/workspaces",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "workspaces"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"statusCode\": 6439,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "50af21ee-bda7-4c10-b379-85d305c36ee0",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "update-user-role",
-                    "workspace",
-                    ":workspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"role\": \"<string>\",\n  \"userId\": \"<uuid>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 6439,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:56:12.000Z",
+              "updatedAt": "2026-10-21T20:56:12.000Z",
+              "uid": "35240-afa62f06-58dd-46f2-a172-c09e7b4a8c52"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:56:11.000Z",
+          "updatedAt": "2026-10-21T20:56:11.000Z",
+          "uid": "35240-f0255b81-f9be-4876-a90e-62c5ebdea7d2"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Hostname of the ToolJet deployment",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "your-tooljet-instance.com",
-      "key": "instance"
+      "id": "b20ccfda-0bb2-4c67-86cb-9197e45f6127",
+      "createdAt": "2026-10-21T20:56:11.000Z",
+      "updatedAt": "2026-10-21T20:56:11.000Z",
+      "uid": "35240-b20ccfda-0bb2-4c67-86cb-9197e45f6127"
     },
     {
-      "type": "string",
-      "value": "https://{{instance}}/api/ext",
-      "key": "baseUrl"
+      "name": "update-user-role",
+      "item": [
+        {
+          "name": "workspace",
+          "item": [
+            {
+              "name": "{workspaceId}",
+              "item": [
+                {
+                  "name": "Update user role in a workspace",
+                  "id": "a6ff79fa-e61a-4b3e-a83d-b2324cbf7ef7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"role\": \"viewer\",\n  \"userId\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/update-user-role/workspace/:workspaceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "update-user-role",
+                        "workspace",
+                        ":workspaceId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "2a652f1f-faea-4d0f-993b-303524d94a56",
+                          "key": "workspaceId",
+                          "value": "<uuid>",
+                          "description": "(Required) Workspace UUID"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c5730e97-cc6e-406b-8f46-24c4bd26dc71",
+                      "name": "User role updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"viewer\",\n  \"userId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/update-user-role/workspace/:workspaceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "update-user-role",
+                            "workspace",
+                            ":workspaceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:56:12.000Z",
+                      "updatedAt": "2026-10-21T20:56:12.000Z",
+                      "uid": "35240-c5730e97-cc6e-406b-8f46-24c4bd26dc71"
+                    },
+                    {
+                      "id": "025263ab-d9cf-4570-b0ba-b211f9aa8f31",
+                      "name": "Authentication required or invalid token",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"viewer\",\n  \"userId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/update-user-role/workspace/:workspaceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "update-user-role",
+                            "workspace",
+                            ":workspaceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:56:12.000Z",
+                      "updatedAt": "2026-10-21T20:56:12.000Z",
+                      "uid": "35240-025263ab-d9cf-4570-b0ba-b211f9aa8f31"
+                    },
+                    {
+                      "id": "e1418c22-40df-459b-9a88-02c55c6d87b4",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"role\": \"viewer\",\n  \"userId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/update-user-role/workspace/:workspaceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "update-user-role",
+                            "workspace",
+                            ":workspaceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "workspaceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:56:12.000Z",
+                      "updatedAt": "2026-10-21T20:56:12.000Z",
+                      "uid": "35240-e1418c22-40df-459b-9a88-02c55c6d87b4"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:56:11.000Z",
+                  "updatedAt": "2026-10-21T20:56:11.000Z",
+                  "uid": "35240-a6ff79fa-e61a-4b3e-a83d-b2324cbf7ef7"
+                }
+              ],
+              "id": "ad77f59a-4c18-4762-abfc-6599c44ff63c",
+              "createdAt": "2026-10-21T20:56:11.000Z",
+              "updatedAt": "2026-10-21T20:56:11.000Z",
+              "uid": "35240-ad77f59a-4c18-4762-abfc-6599c44ff63c"
+            }
+          ],
+          "id": "f2ad1fe5-91b8-4589-87d7-0e53e0d28f30",
+          "createdAt": "2026-10-21T20:56:11.000Z",
+          "updatedAt": "2026-10-21T20:56:11.000Z",
+          "uid": "35240-f2ad1fe5-91b8-4589-87d7-0e53e0d28f30"
+        }
+      ],
+      "id": "e763b9c2-103c-4c22-a173-9fad2e87375e",
+      "createdAt": "2026-10-21T20:56:11.000Z",
+      "updatedAt": "2026-10-21T20:56:11.000Z",
+      "uid": "35240-e763b9c2-103c-4c22-a173-9fad2e87375e"
     }
   ],
   "auth": {
@@ -431,21 +400,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3a376297-e25a-4b4f-97f0-3ccba25f3fbd",
-    "name": "ToolJet External Applications Workspaces API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.\n\n\nContact Support:\n Name: ToolJet",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "instance",
+      "value": "your-tooljet-instance.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}/api/ext"
     }
-  }
+  ]
 }

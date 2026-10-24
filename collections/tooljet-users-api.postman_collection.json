@@ -1,175 +1,140 @@
 {
+  "info": {
+    "_postman_id": "d94a81b2-5d26-4b83-9585-e423cfe9beed",
+    "name": "ToolJet External Users API",
+    "description": "The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.\n\nContact Support:\n Name: ToolJet",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:56:04.000Z",
+    "updatedAt": "2026-10-21T20:56:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d94a81b2-5d26-4b83-9585-e423cfe9beed"
+  },
   "item": [
     {
-      "id": "4558eeb7-0c2c-4a7d-bf85-78c1deef7697",
-      "name": "Users",
-      "description": {
-        "content": "User management endpoints",
-        "type": "text/plain"
-      },
+      "name": "users",
       "item": [
         {
-          "id": "24e56f40-948f-4ff6-8a1d-a0524af8ee98",
           "name": "List all users",
+          "id": "b33b7cdb-2814-4ab6-b96b-57152f6a7fd5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List all users",
-            "description": {},
-            "url": {
-              "path": [
-                "users"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a60becd6-067f-407b-aa24-8e694712c2b4",
-              "name": "List of users",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"aed9363d-6014-11b7-6123-bbc8266a3d83\",\n    \"name\": \"string\",\n    \"email\": \"CvO4Hd@lfkxwsWfGPzSXvPwRNcKXGNerUWoddB.vw\",\n    \"status\": \"archived\",\n    \"defaultOrganizationId\": \"string\",\n    \"workspaces\": [\n      {\n        \"id\": \"76a51cfa-3c4c-4fea-2c33-e5a4e9c0c3bb\",\n        \"name\": \"string\",\n        \"role\": \"developer\",\n        \"status\": \"active\",\n        \"groups\": [\n          {\n            \"id\": \"bb85b41d-a8d9-d398-c5e8-28b1171f0976\",\n            \"name\": \"string\"\n          },\n          {\n            \"id\": \"8b3719c5-537b-28f4-70f8-fc5c79acf6b9\",\n            \"name\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": \"03c66704-5ad2-648f-e6b0-5ec4c9f74d48\",\n        \"name\": \"string\",\n        \"role\": \"admin\",\n        \"status\": \"active\",\n        \"groups\": [\n          {\n            \"id\": \"5c0b9f6f-595a-a576-d5fa-8b99d29bda52\",\n            \"name\": \"string\"\n          },\n          {\n            \"id\": \"37b8d622-fb1d-a45d-d9e3-3795814fb06f\",\n            \"name\": \"string\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"c78448b4-7e7b-02b8-8811-e6bdba8b25f6\",\n    \"name\": \"string\",\n    \"email\": \"ubk@UyfolCTd.gwjb\",\n    \"status\": \"active\",\n    \"defaultOrganizationId\": \"string\",\n    \"workspaces\": [\n      {\n        \"id\": \"bd510642-ad2c-c247-cc22-79c2a39b132f\",\n        \"name\": \"string\",\n        \"role\": \"developer\",\n        \"status\": \"active\",\n        \"groups\": [\n          {\n            \"id\": \"0926c7f0-3e6c-6190-0049-5421230b9bb6\",\n            \"name\": \"string\"\n          },\n          {\n            \"id\": \"ceccaf35-466d-ed00-59ae-298f0af343c3\",\n            \"name\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": \"858ea27a-eabd-e96f-6b66-0829c9d6186b\",\n        \"name\": \"string\",\n        \"role\": \"developer\",\n        \"status\": \"active\",\n        \"groups\": [\n          {\n            \"id\": \"abb0c8a3-3303-8b52-bdb2-9f21511ace7b\",\n            \"name\": \"string\"\n          },\n          {\n            \"id\": \"b5c455c0-aa8b-2a58-079a-1cb5e6999d4e\",\n            \"name\": \"string\"\n          }\n        ]\n      }\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e255c892-a46b-4154-b621-1c33b5f9bd64",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0b6f8bdd-07b5-40c9-8441-f6e6eeb25d55",
-          "name": "Create a user",
-          "request": {
-            "name": "Create a user",
-            "description": {},
             "url": {
-              "path": [
-                "users"
-              ],
+              "raw": "{{baseUrl}}/users",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
+              "path": [
+                "users"
               ]
+            }
+          },
+          "response": [
+            {
+              "id": "7f67cade-d8e4-4d02-a2b4-9fdb2282c60b",
+              "name": "List of users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"archived\",\n    \"defaultOrganizationId\": \"<string>\",\n    \"workspaces\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"role\": \"admin\",\n        \"status\": \"archived\",\n        \"groups\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"role\": \"end-user\",\n        \"status\": \"invited\",\n        \"groups\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"email\": \"<email>\",\n    \"status\": \"archived\",\n    \"defaultOrganizationId\": \"<string>\",\n    \"workspaces\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"role\": \"admin\",\n        \"status\": \"archived\",\n        \"groups\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"role\": \"end-user\",\n        \"status\": \"archived\",\n        \"groups\": [\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          },\n          {\n            \"id\": \"<uuid>\",\n            \"name\": \"<string>\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-7f67cade-d8e4-4d02-a2b4-9fdb2282c60b"
             },
+            {
+              "id": "1661c66f-6b87-413b-b063-31b204c6dd71",
+              "name": "Authentication required or invalid token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-1661c66f-6b87-413b-b063-31b204c6dd71"
+            }
+          ],
+          "createdAt": "2026-10-21T20:56:05.000Z",
+          "updatedAt": "2026-10-21T20:56:05.000Z",
+          "uid": "35240-b33b7cdb-2814-4ab6-b96b-57152f6a7fd5"
+        },
+        {
+          "name": "Create a user",
+          "id": "57f2cadf-1c91-438b-8522-a51d7d3b2424",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -180,1858 +145,1716 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
             }
           },
           "response": [
             {
-              "id": "7cda6abd-0d5b-40c0-ae5f-345cd282f0cb",
+              "id": "2e3b2a83-4cdd-4325-8e8a-ee8c3dff9831",
               "name": "User created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"6a032959-7aa4-b6b6-91c8-7af8904c1d6a\",\n  \"name\": \"string\",\n  \"email\": \"yEgEsF@YykXqCYXYiueTkOrcAKExghgvDQpLM.how\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"string\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"invited\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-2e3b2a83-4cdd-4325-8e8a-ee8c3dff9831"
             },
             {
-              "id": "9e3511be-d340-4291-9a01-c7032ffb0eca",
+              "id": "d13672d5-0a79-4bd0-81c9-d66c6c656639",
               "name": "Invalid request body or parameters",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-d13672d5-0a79-4bd0-81c9-d66c6c656639"
             },
             {
-              "id": "def59feb-6f97-420d-bf84-dedd14165a67",
+              "id": "e15ad736-faec-4ff6-a799-64714c7390d0",
               "name": "Authentication required or invalid token",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"viewer\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"active\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "users"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-e15ad736-faec-4ff6-a799-64714c7390d0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "74e307c7-20a6-4319-b6db-b0ff54af61e4",
-          "name": "Get a user by ID",
-          "request": {
-            "name": "Get a user by ID",
-            "description": {},
-            "url": {
-              "path": [
-                "user",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) User UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "cf696ee6-43b9-4d55-9448-631066b06b1f",
-              "name": "User details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"6a032959-7aa4-b6b6-91c8-7af8904c1d6a\",\n  \"name\": \"string\",\n  \"email\": \"yEgEsF@YykXqCYXYiueTkOrcAKExghgvDQpLM.how\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"string\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0b885b75-4ebb-4f4d-8413-167fed9c7816",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "98e98ad0-68a2-441d-84fd-5d2ab61e3f2b",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "08d21aa5-523b-45c8-9da3-77acdca23a87",
-          "name": "Update a user",
-          "request": {
-            "name": "Update a user",
-            "description": {},
-            "url": {
-              "path": [
-                "user",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) User UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e7a8e0a1-1b61-4a01-a9ea-0f85bf25283e",
-              "name": "User updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"6a032959-7aa4-b6b6-91c8-7af8904c1d6a\",\n  \"name\": \"string\",\n  \"email\": \"yEgEsF@YykXqCYXYiueTkOrcAKExghgvDQpLM.how\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"string\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"<string>\",\n      \"status\": \"<string>\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4eab9eef-83df-40d9-b9e6-2cb1e6bfc5e6",
-              "name": "Invalid request body or parameters",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9f906662-1eaa-4722-aecd-c744dcbb4969",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5131b8fa-e5ae-4e48-8e5d-f6a41c9bea15",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"<string>\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8de5ade6-72e1-4687-a922-c578fbf789a8",
-          "name": "Replace user workspaces",
-          "request": {
-            "name": "Replace user workspaces",
-            "description": {},
-            "url": {
-              "path": [
-                "user",
-                ":id",
-                "workspaces"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) User UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f8698e9c-e617-4000-bb50-3a83bc474e0a",
-              "name": "Workspaces replaced",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a322151a-0a14-4c12-acd0-a42bc576a969",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7feb0fba-07ed-4b77-947b-739c6a0f580e",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"<string>\",\n    \"status\": \"<string>\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "90f1795c-da9e-4e7d-8ade-485363fbe6c8",
-          "name": "Update user workspace membership",
-          "request": {
-            "name": "Update user workspace membership",
-            "description": {},
-            "url": {
-              "path": [
-                "user",
-                ":id",
-                "workspace",
-                ":workspaceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) User UUID"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "workspaceId",
-                  "description": "(Required) Workspace UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PATCH",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "8f28c2be-0b71-41e8-a9b5-6f40263df535",
-              "name": "Workspace membership updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id",
-                    "workspace",
-                    ":workspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "27f30792-2f8e-4b9e-803c-72004838e20f",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id",
-                    "workspace",
-                    ":workspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2abe64a8-de27-4341-89bf-c27bde123f5c",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "user",
-                    ":id",
-                    "workspace",
-                    ":workspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PATCH",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e4d567d3-a9ab-4b8a-9812-dd58a0125bde",
-          "name": "Get user metadata in workspace",
-          "request": {
-            "name": "Get user metadata in workspace",
-            "description": {},
-            "url": {
-              "path": [
-                "workspace",
-                ":workspaceId",
-                "user",
-                ":userId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "workspaceId",
-                  "description": "(Required) Workspace UUID"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userId",
-                  "description": "(Required) User UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "16fb4b26-a126-4449-964c-617bc3b937ce",
-              "name": "User metadata",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspace",
-                    ":workspaceId",
-                    "user",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"key_0\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9f64b63a-8e18-4ce5-b5b3-ad25b4f3eec5",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspace",
-                    ":workspaceId",
-                    "user",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "faf4a4e5-1eb5-41ee-b209-25f1026fa1b3",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspace",
-                    ":workspaceId",
-                    "user",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e00db985-295a-4747-949e-bf701cdb4853",
-          "name": "Update user metadata in workspace",
-          "request": {
-            "name": "Update user metadata in workspace",
-            "description": {},
-            "url": {
-              "path": [
-                "workspace",
-                ":workspaceId",
-                "user",
-                ":userId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "workspaceId",
-                  "description": "(Required) Workspace UUID"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "userId",
-                  "description": "(Required) User UUID"
-                },
-                {
-                  "description": "Hostname of the ToolJet deployment",
-                  "type": "any",
-                  "value": "{{instance}}",
-                  "key": "instance"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1226707b-10ca-44fe-8dfd-800d0e11c761",
-              "name": "User metadata updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspace",
-                    ":workspaceId",
-                    "user",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9b796890-1114-4066-8d9a-b085ca73111f",
-              "name": "Authentication required or invalid token",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspace",
-                    ":workspaceId",
-                    "user",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "582ab6cf-2cae-40b9-95b3-ce9db19cf46d",
-              "name": "Resource not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "workspace",
-                    ":workspaceId",
-                    "user",
-                    ":userId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "workspaceId",
-                      "description": "(Required) Workspace UUID"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "userId",
-                      "description": "(Required) User UUID"
-                    },
-                    {
-                      "description": "Hostname of the ToolJet deployment",
-                      "type": "any",
-                      "value": "{{instance}}",
-                      "key": "instance"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"statusCode\": 9383,\n  \"message\": \"string\",\n  \"error\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:56:05.000Z",
+          "updatedAt": "2026-10-21T20:56:05.000Z",
+          "uid": "35240-57f2cadf-1c91-438b-8522-a51d7d3b2424"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "Hostname of the ToolJet deployment",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "your-tooljet-instance.com",
-      "key": "instance"
+      "id": "7a817da6-3bbb-4c95-8648-3b7982dcc08c",
+      "createdAt": "2026-10-21T20:56:05.000Z",
+      "updatedAt": "2026-10-21T20:56:05.000Z",
+      "uid": "35240-7a817da6-3bbb-4c95-8648-3b7982dcc08c"
     },
     {
-      "type": "string",
-      "value": "https://{{instance}}/api/ext",
-      "key": "baseUrl"
+      "name": "user",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "workspaces",
+              "item": [
+                {
+                  "name": "Replace user workspaces",
+                  "id": "c0183a79-87e3-4ea5-a43f-648e94a5f7cc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"viewer\",\n    \"status\": \"active\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"admin\",\n    \"status\": \"invited\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id",
+                        "workspaces"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ca58a2f5-cf6a-49a6-89c9-422da55d36c4",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User UUID"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9cee36e8-4261-4bdf-9d5b-74c3232e2fc3",
+                      "name": "Workspaces replaced",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"viewer\",\n    \"status\": \"active\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"admin\",\n    \"status\": \"invited\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/:id/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            ":id",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-9cee36e8-4261-4bdf-9d5b-74c3232e2fc3"
+                    },
+                    {
+                      "id": "2d8de6ec-57c6-452a-8342-7e9c07407ecb",
+                      "name": "Authentication required or invalid token",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"viewer\",\n    \"status\": \"active\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"admin\",\n    \"status\": \"invited\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/:id/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            ":id",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-2d8de6ec-57c6-452a-8342-7e9c07407ecb"
+                    },
+                    {
+                      "id": "97ee625e-2e68-4c2b-a36e-ce8770ca3f52",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"viewer\",\n    \"status\": \"active\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"role\": \"admin\",\n    \"status\": \"invited\",\n    \"groups\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\"\n      }\n    ]\n  }\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/:id/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            ":id",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-97ee625e-2e68-4c2b-a36e-ce8770ca3f52"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-c0183a79-87e3-4ea5-a43f-648e94a5f7cc"
+                }
+              ],
+              "id": "bd947294-77ed-4e1b-9dca-a09e515071fa",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-bd947294-77ed-4e1b-9dca-a09e515071fa"
+            },
+            {
+              "name": "workspace",
+              "item": [
+                {
+                  "name": "{workspaceId}",
+                  "item": [
+                    {
+                      "name": "Update user workspace membership",
+                      "id": "25d78ad2-2071-4d55-9773-1d9608ae42da",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"invited\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/:id/workspace/:workspaceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            ":id",
+                            "workspace",
+                            ":workspaceId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "99a9f4aa-8b98-4ae6-a5f6-0fa7716e3701",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) User UUID"
+                            },
+                            {
+                              "id": "979ed2fe-477b-4b84-b2f2-09d396b9af4b",
+                              "key": "workspaceId",
+                              "value": "<uuid>",
+                              "description": "(Required) Workspace UUID"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2a31ecf6-c1b3-42dc-9940-ebb7ca7fe22f",
+                          "name": "Workspace membership updated",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"invited\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/:id/workspace/:workspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                ":id",
+                                "workspace",
+                                ":workspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "workspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-2a31ecf6-c1b3-42dc-9940-ebb7ca7fe22f"
+                        },
+                        {
+                          "id": "904d2fe5-ad84-4666-8a28-898ff057f523",
+                          "name": "Authentication required or invalid token",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"invited\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/:id/workspace/:workspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                ":id",
+                                "workspace",
+                                ":workspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "workspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-904d2fe5-ad84-4666-8a28-898ff057f523"
+                        },
+                        {
+                          "id": "e75fe65d-c6a3-4dbe-8bda-4cb168b71afc",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"status\": \"invited\",\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/:id/workspace/:workspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                ":id",
+                                "workspace",
+                                ":workspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                },
+                                {
+                                  "key": "workspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-e75fe65d-c6a3-4dbe-8bda-4cb168b71afc"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-25d78ad2-2071-4d55-9773-1d9608ae42da"
+                    }
+                  ],
+                  "id": "e309e85c-b483-4e63-9609-1bc629a02045",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-e309e85c-b483-4e63-9609-1bc629a02045"
+                }
+              ],
+              "id": "31b6e0e3-7fc8-4aa8-9672-a0a3d1b0d72b",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-31b6e0e3-7fc8-4aa8-9672-a0a3d1b0d72b"
+            },
+            {
+              "name": "Get a user by ID",
+              "id": "37595222-1d43-49ac-ad1d-21e0aa4cb494",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b2a12102-9f85-436c-8e65-835343b2fc2f",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) User UUID"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b60cb552-7a74-438e-afa5-f56430158b21",
+                  "name": "User details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"invited\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-b60cb552-7a74-438e-afa5-f56430158b21"
+                },
+                {
+                  "id": "e1022f04-1568-4f21-a1ef-85c3f29a9f8a",
+                  "name": "Authentication required or invalid token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-e1022f04-1568-4f21-a1ef-85c3f29a9f8a"
+                },
+                {
+                  "id": "ec567998-06b0-4548-a6c8-36d657d09710",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-ec567998-06b0-4548-a6c8-36d657d09710"
+                }
+              ],
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-37595222-1d43-49ac-ad1d-21e0aa4cb494"
+            },
+            {
+              "name": "Update a user",
+              "id": "30fd5177-3fe1-4b16-83f5-ab3ccc4d99bb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8def3732-fed9-4f95-a973-ce4860bdadac",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) User UUID"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "eb21d72e-7dc8-4bec-8a61-eefc7735312a",
+                  "name": "User updated",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\",\n  \"workspaces\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"archived\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"role\": \"admin\",\n      \"status\": \"invited\",\n      \"groups\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-eb21d72e-7dc8-4bec-8a61-eefc7735312a"
+                },
+                {
+                  "id": "426ebc21-97e9-4bbf-ae88-9d722f5f0249",
+                  "name": "Invalid request body or parameters",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-426ebc21-97e9-4bbf-ae88-9d722f5f0249"
+                },
+                {
+                  "id": "9c4c8d33-2f59-486d-aba4-6c0bf3454a77",
+                  "name": "Authentication required or invalid token",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-9c4c8d33-2f59-486d-aba4-6c0bf3454a77"
+                },
+                {
+                  "id": "d40be684-51f5-4ee6-8764-f8594363f4ea",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"password\": \"<string>\",\n  \"status\": \"invited\",\n  \"defaultOrganizationId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-d40be684-51f5-4ee6-8764-f8594363f4ea"
+                }
+              ],
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-30fd5177-3fe1-4b16-83f5-ab3ccc4d99bb"
+            }
+          ],
+          "id": "b184c18d-5b7b-43de-8dc0-da0daaa0a4b3",
+          "createdAt": "2026-10-21T20:56:05.000Z",
+          "updatedAt": "2026-10-21T20:56:05.000Z",
+          "uid": "35240-b184c18d-5b7b-43de-8dc0-da0daaa0a4b3"
+        }
+      ],
+      "id": "ce50f874-755f-48c1-afef-6984f9cb1071",
+      "createdAt": "2026-10-21T20:56:05.000Z",
+      "updatedAt": "2026-10-21T20:56:05.000Z",
+      "uid": "35240-ce50f874-755f-48c1-afef-6984f9cb1071"
+    },
+    {
+      "name": "workspace",
+      "item": [
+        {
+          "name": "{workspaceId}",
+          "item": [
+            {
+              "name": "user",
+              "item": [
+                {
+                  "name": "{userId}",
+                  "item": [
+                    {
+                      "name": "Get user metadata in workspace",
+                      "id": "ba24b2ce-ca3a-4c9d-9c57-fb5c575b755e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspace",
+                            ":workspaceId",
+                            "user",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c90c274f-f9f3-41f6-8a80-1f194d6d2105",
+                              "key": "workspaceId",
+                              "value": "<uuid>",
+                              "description": "(Required) Workspace UUID"
+                            },
+                            {
+                              "id": "d1e5e053-b289-4eb0-b70e-81a01de88880",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) User UUID"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2199cfc3-3cce-451a-9133-646bdae9c568",
+                          "name": "User metadata",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspace",
+                                ":workspaceId",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspaceId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"et_82\": 61163814\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-2199cfc3-3cce-451a-9133-646bdae9c568"
+                        },
+                        {
+                          "id": "70fd1539-b151-43af-bf21-a4eb7efac29f",
+                          "name": "Authentication required or invalid token",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspace",
+                                ":workspaceId",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspaceId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-70fd1539-b151-43af-bf21-a4eb7efac29f"
+                        },
+                        {
+                          "id": "91c0972b-2ca1-440f-9727-d206f12ed744",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspace",
+                                ":workspaceId",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspaceId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-91c0972b-2ca1-440f-9727-d206f12ed744"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-ba24b2ce-ca3a-4c9d-9c57-fb5c575b755e"
+                    },
+                    {
+                      "name": "Update user metadata in workspace",
+                      "id": "47043569-b165-4890-9f8c-b062c7c226fc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "workspace",
+                            ":workspaceId",
+                            "user",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2dee580e-3832-4fa7-9dff-a62db82fa683",
+                              "key": "workspaceId",
+                              "value": "<uuid>",
+                              "description": "(Required) Workspace UUID"
+                            },
+                            {
+                              "id": "16172b4a-3aad-466b-b971-dd91509f1c7c",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) User UUID"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "581365ea-3c8f-4c44-a619-f7f2ba12ce80",
+                          "name": "User metadata updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspace",
+                                ":workspaceId",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspaceId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-581365ea-3c8f-4c44-a619-f7f2ba12ce80"
+                        },
+                        {
+                          "id": "704b7981-29c3-49d2-bb3f-7079001327f0",
+                          "name": "Authentication required or invalid token",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspace",
+                                ":workspaceId",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspaceId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-704b7981-29c3-49d2-bb3f-7079001327f0"
+                        },
+                        {
+                          "id": "d54365d2-1cb1-4e81-b4bd-d9111e3c48a9",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userDetails\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/workspace/:workspaceId/user/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "workspace",
+                                ":workspaceId",
+                                "user",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "workspaceId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"statusCode\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:56:05.000Z",
+                          "updatedAt": "2026-10-21T20:56:05.000Z",
+                          "uid": "35240-d54365d2-1cb1-4e81-b4bd-d9111e3c48a9"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:56:05.000Z",
+                      "updatedAt": "2026-10-21T20:56:05.000Z",
+                      "uid": "35240-47043569-b165-4890-9f8c-b062c7c226fc"
+                    }
+                  ],
+                  "id": "87fe4230-a2f6-4ebf-be66-f3849499cf56",
+                  "createdAt": "2026-10-21T20:56:05.000Z",
+                  "updatedAt": "2026-10-21T20:56:05.000Z",
+                  "uid": "35240-87fe4230-a2f6-4ebf-be66-f3849499cf56"
+                }
+              ],
+              "id": "4e1079a8-2a7a-470e-88c6-2bbb37fd6177",
+              "createdAt": "2026-10-21T20:56:05.000Z",
+              "updatedAt": "2026-10-21T20:56:05.000Z",
+              "uid": "35240-4e1079a8-2a7a-470e-88c6-2bbb37fd6177"
+            }
+          ],
+          "id": "696b39c6-7c3f-49be-a60b-4edf89e22f28",
+          "createdAt": "2026-10-21T20:56:05.000Z",
+          "updatedAt": "2026-10-21T20:56:05.000Z",
+          "uid": "35240-696b39c6-7c3f-49be-a60b-4edf89e22f28"
+        }
+      ],
+      "id": "ca8055b0-0dee-4116-a9eb-8241435cbaca",
+      "createdAt": "2026-10-21T20:56:05.000Z",
+      "updatedAt": "2026-10-21T20:56:05.000Z",
+      "uid": "35240-ca8055b0-0dee-4116-a9eb-8241435cbaca"
     }
   ],
   "auth": {
@@ -2039,21 +1862,24 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6113849e-89e7-40ee-ace2-54a524b3a1f9",
-    "name": "ToolJet External Applications Users API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The ToolJet External API provides REST endpoints for managing users, workspaces, applications (export/import), groups, and user role assignments across a ToolJet instance. It is enabled via environment variables and secured with a static access token using Basic authentication.\n\n\nContact Support:\n Name: ToolJet",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "instance",
+      "value": "your-tooljet-instance.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{instance}}/api/ext"
     }
-  }
+  ]
 }
